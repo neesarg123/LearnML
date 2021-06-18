@@ -1,0 +1,19 @@
+{% extends "explore/base.html" %}
+
+{% block section %}
+
+<section class="posts-section">
+	<div class="posts-content">
+		{% for post in posts %}
+		<div class="post-card">
+			<div class="post-card-container">
+				<h2>{{ post.title }}</h2>
+				<p class="post-author">{{ post.author }}</p>
+				<p class="post-audience">{{ post.audience }}</p>
+				<p class="post-content">{{ post.content }}</p>
+			</div>
+		</div>
+		{% endfor %}
+</section>
+
+{% endblock section %}

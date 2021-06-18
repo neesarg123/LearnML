@@ -1,0 +1,68 @@
+{% extends "land/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content">
+	<div class="textBox">
+		<h2>Less <span>Reading</span>, <br>More <span>Learning</span></h2>
+		<p>Learn each concept, one <b>stage</b> at a time. No ads, no nonsense.</p>
+		<a class="cta" href="#down">
+		<button class="learnButton">LAUNCH</button>
+		</a>
+	</div>
+	<div class="imgBox">
+		<img class="rocketPic" src="{% static 'images/Rocket3Expanded.svg' %}">
+	</div>
+	<div class="card">
+		<div class="introCardContainer">
+			<ol class='stageList'>
+				<li>
+					<h4>⛽ <b>Stage 1:</b></h4>
+					<p>Regression</p>
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block section %}
+<section>
+	<div class="algoText">
+			<form>
+			  <input type="text" name="learnWhat" placeholder="Linear Regression" class="question" id="down" required autocomplete="on" />
+			</form>
+		</div>
+</section>
+<section>
+	<div class="linContent">
+		<div class="objectivesCard">
+			<div class="objectivesCardContainer">
+				<h2>Table of Contents</h2>
+				<ol class='tocList'>
+					<li>
+						<a class="tocA" href="#">➼ Regression who?</a>
+					</li>
+					<li>
+						<a class="tocA" href="#">➼ Simple Linear Regression</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="regressionDefCard">
+			<div class="regressionDefCardContainer">
+				<h2>re • gres • sion</h2>
+				<p class="defCategory">statistics</p>
+				<p class="regDef">a measure of the relationship between a <span>dependent</span> variable and <span>one or more independent</span> variables.</p>
+			</div>
+		</div>
+
+		<div class="simpleRegIntroCard">
+			<div class="simpleRegIntroCardContainer">
+				<h2>Simple Linear Regression</h2>
+				<p class="simpleRegDesc">deals with <span>one dependent</span> along with just <span>one independent</span> variable.</p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock section %}

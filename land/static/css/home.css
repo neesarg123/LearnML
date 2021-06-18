@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+	box-sizing: : border-box;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+ }
+
+li, a, button {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	color: #000;
+	text-decoration: none;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	z-index: 2;
+  	width: 100%;
+}
+
+
+.logo {
+	cursor: pointer;
+}
+
+.nav_links {
+	list-style: none;
+}
+
+.nav_links li {
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.nav_links li a {
+	transition: all 0.4s ease 0s;
+	border-bottom: 3px solid transparent;
+}
+
+.nav_links a:hover {
+	border-bottom: 3px solid #d63a3a;
+}
+
+.nav_links li a:hover {
+	color: #2ee2e6;
+}
+
+.loginButton {
+	padding:  9px 25px;
+	margin-right: 20px;
+	background-color: rgb(58, 214, 97);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+}
+
+.loginButton:hover {
+	background-color: rgba(58, 214, 97, 0.5);
+}
+
+.learnButton {
+	padding:  9px 25px;
+	margin-left: 25%;
+	margin-top: 20px;
+	background-color: rgb(20, 124, 81);
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+	color: #FFFFFF;
+}
+
+.learnButton:hover {
+	background-color: rgba(20, 124, 81, 0.7);
+	border-bottom: 3px solid #db0280;
+}
+
+
+.textBox h2, p {
+	padding-left: 25%;
+	transition: all 0.4s ease 0s;
+}
+
+.textBox h2 {
+	font-family: "Roboto", sans-serif;
+	font-weight: bold;
+	font-size: 2.5em;
+	line-height: 1.5em;
+	color: #000;
+	text-decoration: none;
+	padding-top: 90px;
+}
+
+.textBox h2 span {
+	color: #017143;
+	font-size: 1.2em;
+	font-weight: 900;
+	transition: all 0.4s ease 0s;
+}
+
+.textBox span:hover {
+	border-bottom: 3px solid #d63a3a;
+	cursor: none;
+}
+
+.textBox p {
+	font-family: "Roboto", sans-serif;
+	font-weight: 0;
+	font-size: 15px;
+	color: #000;
+	text-decoration: none;
+}
+
+.content {
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.imgBox {
+	padding-right: 25%;
+	padding-left: 15%;
+	margin-right: 0;
+	transition: all 1s ease 0s;
+	border-right: 3px solid #000;
+	margin-top: 90px;
+}
+
+.imgBox:hover + .card {
+	display: inline-flex;
+	border-bottom: 3px solid #d63a3a;
+}
+
+.card {
+	display: flex;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	margin-right: 5%;
+	overflow: visible;
+	padding-right: 2%;
+	padding-top: 25%;
+	font-family: "Roboto", sans-serif;
+	justify-content: space-between;
+	transition: all 0.4s ease 0s;
+}
+
+.card:hover {
+	border-bottom: 3px solid #ffe51f;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.introCardContainer {
+	padding: 2px 16px;
+	padding-bottom: 12px;
+}
+
+
+ol.stageList {
+	list-style: none;
+	padding-left: 2px;
+}
+
+.stageList h4 {
+	font-size: 20px;
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  border: none;
+  font-size: 22px;
+  text-align: center;
+}
+
+input.question {
+  font-size: 28px;
+  font-weight: 300;
+  border-radius: 2px;
+  margin: 0;
+  border: none;
+  width: 80%;
+  background: rgba(0, 0, 0, 0);
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  overflow-x: hidden; 
+  border-bottom: 3px solid powderblue;
+
+}
+
+input.question:focus {
+  outline: none;
+}
+
+.algoText {
+	margin: 0;
+	padding-left: 40%;
+	padding-right: 35%;
+	padding-top: 10%;
+	padding-bottom: 2%;
+	
+}
+
+.objectivesCard {
+	display: flex;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	width: 95%;
+	height: 200px;
+	margin-bottom: 50px;
+	margin-left: 5%;
+	background-color: #d6d6d6;
+}
+
+.objectivesCardContainer {
+	background-color: #d6d6d6;
+
+}
+
+.objectivesCard:hover {
+	border-bottom: 3px solid #ff9500;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.linContent {
+	position: relative;
+	width: 95%;
+	display: table;
+	height: 95%;
+}
+
+.objectivesCardContainer h2 {
+	padding: 9px 10%;
+	width: 100%;
+	background-color: #d6d6d6;
+}
+
+.tocList li {
+	padding-left: 40px;
+	width: 100%;
+	background-color: #d6d6d6;
+
+}
+
+.tocList {
+	width: 100%;
+	list-style: none;
+	background-color: #d6d6d6;
+
+}
+
+.tocA {
+	background-color: #d6d6d6;
+}
+
+.regressionDefCard {
+	display: inline-flex;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	width: 35%;
+	height: 200px;
+	margin-bottom: 50px;
+	margin-left: 5%;
+}
+
+.regressionDefCard:hover {
+	border-bottom: 3px solid #de99c1;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.regressionDefCardContainer h2 {
+	padding: 9px 25px;
+	width: 100%;
+	background-color: #ffcdbd;
+}
+
+.defCategory, .regDef {
+	padding: 9px 25px;
+	margin-top: -10px;
+	background-color: #ffcdbd;
+}
+
+.defCategory {
+	opacity: 0.6;
+}
+
+.regDef .simpleRegDesc {
+	line-height: 150%;
+}
+
+.regressionDefCardContainer {
+	background-color: #ffcdbd;
+}
+
+.regressionDefCardContainer span {
+	background-color: #ffcdbd;
+}
+
+.regressionDefCardContainer:hover span {
+	border-bottom: 3px solid #de99c1;
+	transition: all 0.3s ease 1s;
+	background-color: #f7ed2d;
+}
+
+.simpleRegIntroCard {
+	display: inline-flex;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	width: 55%;
+	height: 100px;
+	margin-bottom: 50px;
+	margin-left: 5%;
+}
+
+
+.simpleRegIntroCard h2 {
+	display: flex;
+	justify-content: center;
+	line-height: 1.8;
+	width: 100%;
+	background-color: #b4f72d;
+}
+
+.simpleRegIntroCardContainer {
+	background-color: #b4f72d;
+	width: 100%;
+}
+
+.simpleRegDesc {
+	padding-left: 14.5%;
+	line-height: 2;
+	background-color: #b4f72d;
+}
+
+.simpleRegIntroCardContainer span {
+	background-color: #b4f72d;
+}
+
+.simpleRegIntroCardContainer:hover span {
+	border-bottom: 3px solid #8ecf7a;
+	transition: all 0.3s ease 1s;
+	background-color: #f7ed2d;
+}
+
+.simpleRegIntroCard:hover {
+	border-bottom: 3px solid #8ecf7a;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

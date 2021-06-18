@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+	box-sizing: : border-box;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+ }
+
+li, a, button {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	color: #000;
+	text-decoration: none;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	z-index: 2;
+  	width: 100%;
+}
+
+
+.logo {
+	cursor: pointer;
+}
+
+.nav_links {
+	list-style: none;
+}
+
+.nav_links li {
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.nav_links li a {
+	transition: all 0.4s ease 0s;
+	border-bottom: 3px solid transparent;
+}
+
+.nav_links a:hover {
+	border-bottom: 3px solid #d63a3a;
+}
+
+.nav_links li a:hover {
+	color: #2ee2e6;
+}
+
+.loginButton {
+	padding:  9px 25px;
+	margin-right: 20px;
+	background-color: rgb(58, 214, 97);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+}
+
+.loginButton:hover {
+	background-color: rgba(58, 214, 97, 0.5);
+}
+
+.posts-content {
+	position: relative;
+	width: 95%;
+	display: table;
+	height: 95%;
+}
+
+.post-card {
+	display: row;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	width: 45%;
+	height: 200px;
+	margin-left: 30%;
+	margin-top: 80px;
+}
+
+.post-card-container h2 {
+	padding: 9px 25px;
+	width: 100%;
+}
+
+.post-card:hover {
+	border-bottom: 3px solid #4287f5;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.post-author, .post-content, .post-audience {
+	padding: 9px 25px;
+	margin-top: -10px;
+}
+
+.post-author {
+	opacity: 0.6;
+	font-size: 12px;
+}

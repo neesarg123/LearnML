@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Learn ML</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/explore_home.css' %}">
+	</head>
+	<body>
+		<section>
+			<header>
+				<a href="/">
+					<img class="logo" src="{% static 'images/logo.svg' %}" alt="logo">
+				</a>
+				<nav class="navbar">
+					<ul class="nav_links">
+						<li>
+							<a href="/">learn</a>
+						</li>
+						<li>
+							<a href="#">apply</a>
+						</li>
+						<li>
+							<a href="/explore">explore</a>
+						</li>
+						<li>
+							<a href="#">ask</a>
+						</li>
+						<li>
+							<a href="#">support</a>
+						</li>
+					</ul>
+				</nav>
+				<a class="cta" href="#">
+					<button class="loginButton">login</button>
+				</a>
+			</header>
+
+			{% block content %} {% endblock %}
+		</section>	
+		{% block section %} {% endblock %}
+	</body>
