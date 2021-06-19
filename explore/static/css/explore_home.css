@@ -102,12 +102,18 @@ header {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.post-author, .post-content, .post-audience {
+.post-author-and-date, .post-content, .post-audience {
 	padding: 9px 25px;
 	margin-top: -10px;
 }
 
-.post-author {
+.post-author-and-date {
 	opacity: 0.6;
 	font-size: 12px;
+	color: blue;
+}
+
+.post-audience {
+	color: #ff6652;
+	font-size: 14px;
 }

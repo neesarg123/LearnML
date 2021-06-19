@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ["localhost", "192.168.0.115", "192.168.0.121"]
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'explore.apps.ExploreConfig',
     'land.apps.LandConfig',
     'django.contrib.admin',
@@ -125,3 +127,5 @@ STATICFILES_DIRS = [
     "/LearnML/land/static",
     "/LearnML/explore/static",
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

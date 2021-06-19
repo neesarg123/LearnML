@@ -1,0 +1,22 @@
+{% extends "land/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block section %}
+	<div class='content-section'>
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="join-form-legend">join today</legend>
+				<div class="form-container">
+					{{ form|crispy }}
+				</div>
+			</fieldset>
+			<div class="form-group-down">
+				<button class='sign-up-btn' type="submit">sign up</button>
+			</div>
+		</form>
+		<div class="login-option">
+			<small class="login-option-text">already have an account? <a class="login-option-link-ml-2" href="#">login</a></small>
+		</div>
+	</div>
+{% endblock section %}

@@ -8,7 +8,7 @@
 		<div class="post-card">
 			<div class="post-card-container">
 				<h2>{{ post.title }}</h2>
-				<p class="post-author">{{ post.author }}</p>
+				<p class="post-author-and-date">{{ post.author }}, {{ post.date_posted|date:"N d, Y" }}</p>
 				<p class="post-audience">{{ post.audience }}</p>
 				<p class="post-content">{{ post.content }}</p>
 			</div>
