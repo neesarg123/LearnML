@@ -72,6 +72,34 @@ header {
 	background-color: rgba(58, 214, 97, 0.5);
 }
 
+.logoutButton {
+	padding:  9px 25px;
+	margin-right: 20px;
+	background-color: rgb(255, 62, 28);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+}
+
+.logoutButton:hover {
+	background-color: rgba(255, 62, 28, 0.5);
+}
+
+.profileButton {
+	padding:  9px 15px;
+	margin-right: -50px;
+	background-color: rgb(237, 76, 76);
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+}
+
+.profileButton:hover {
+	background-color: rgba(237, 76, 76, 0.5);
+}
+
 .learnButton {
 	padding:  9px 25px;
 	margin-left: 25%;
@@ -90,7 +118,7 @@ header {
 }
 
 
-.textBox h2, p {
+.textBox h2, .textBox-p {
 	padding-left: 25%;
 	transition: all 0.4s ease 0s;
 }
@@ -409,6 +437,7 @@ input {
   margin: 5px;
   border: 1px solid black;
   font-size: 16px;
+  color: #543deb;
 }
 
 .form-group-down, .login-option {
@@ -449,4 +478,62 @@ input {
 	display: flex;
 	justify-content: center;
 	font-family: "Roboto", sans-serif;
+}
+
+.content-section {
+	position: relative;
+	width: 95%;
+	display: table;
+	height: 95%;
+}
+
+.media-card {
+	display: flex;
+	position: relative;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	width: 55%;
+	height: 300px;
+	margin-left: 25%;
+	margin-top: 80px;
+	justify-content: center;
+	transition: all 0.3s ease 0s;
+}
+
+.media-card:hover {
+	border-left: 5px solid #5100ff;
+	border-right: 5px solid #5100ff;
+}
+
+.media-body {
+	display: block;
+	margin: 10px;
+	justify-content: center;
+}
+
+.round-account-img, .round-account-img-p {
+	display: block;
+	border-radius: 100%;
+}
+
+.round-account-img-p {
+	width: 32%;
+	height: 32%;
+	transition: all 0.3s ease 0s;
+}
+
+.round-account-img-p:hover {
+	border-bottom: 3px solid #d63a3a;
+}
+
+.account-heading {
+	display: flex;
+	justify-content: center;
+}
+
+p.account-email-text {
+	display: flex;
+	justify-content: center;
 }

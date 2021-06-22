@@ -13,6 +13,20 @@
 				<p class="post-content">{{ post.content }}</p>
 			</div>
 		</div>
+		<div class="readability-card">
+			<div class="readability-card-container">
+				<input type="radio" onclick="if(this.checked){console.log(10)}" name="rating" id="rate10{{ forloop.counter0 }}"><label for="rate10{{ forloop.counter0 }}">10</label>
+				<input type="radio" onclick="if(this.checked){console.log(9)}" name="rating" id="rate9{{ forloop.counter0 }}"><label for="rate9{{ forloop.counter0 }}">9</label>
+				<input type="radio" onclick="if(this.checked){console.log(8)}" name="rating" id="rate8{{ forloop.counter0 }}"><label for="rate8{{ forloop.counter0 }}">8</label>
+				<input type="radio" onclick="if(this.checked){console.log(7)}" name="rating" id="rate7{{ forloop.counter0 }}"><label for="rate7{{ forloop.counter0 }}">7</label>
+				<input type="radio" onclick="if(this.checked){console.log(6)}" name="rating" id="rate6{{ forloop.counter0 }}"><label for="rate6{{ forloop.counter0 }}">6</label>
+				<input type="radio" onclick="if(this.checked){console.log(5)}" name="rating" id="rate5{{ forloop.counter0 }}"><label for="rate5{{ forloop.counter0 }}">5</label>
+				<input type="radio" onclick="if(this.checked){console.log(4)}" name="rating" id="rate4{{ forloop.counter0 }}"><label for="rate4{{ forloop.counter0 }}">4</label>
+				<input type="radio" onclick="if(this.checked){console.log(3)}" name="rating" id="rate3{{ forloop.counter0 }}"><label for="rate3{{ forloop.counter0 }}">3</label>
+				<input type="radio" onclick="if(this.checked){console.log(2)}" name="rating" id="rate2{{ forloop.counter0 }}"><label for="rate2{{ forloop.counter0 }}">2</label>
+				<input type="radio" onclick="if(this.checked){console.log(1)}" name="rating" id="rate1{{ forloop.counter0 }}"><label for="rate1{{ forloop.counter0 }}">1</label>
+			</div>
+		</div>
 		{% endfor %}
 </section>
 

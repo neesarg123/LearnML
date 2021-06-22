@@ -17,7 +17,7 @@
 				<nav class="navbar">
 					<ul class="nav_links">
 						<li>
-							<a href="#down">learn</a>
+							<a href="/#down">learn</a>
 						</li>
 						<li>
 							<a href="#">apply</a>
@@ -33,9 +33,18 @@
 						</li>
 					</ul>
 				</nav>
-				<a class="cta" href="#">
+				{% if user.is_authenticated %}
+				<a class="cta" href="{% url 'profile' %}">
+					<img class="round-account-img-p" src="{{ user.profile.image.url }}" alt="{{ user|make_list|first }}">
+				</a>
+				<a class="cta" href="{% url 'logout' %}">
+					<button class="logoutButton">logout</button>
+				</a>
+				{% else %}
+				<a class="cta" href="{% url 'login' %}">
 					<button class="loginButton">login</button>
 				</a>
+				{% endif %}
 			</header>
 
 			{% if messages %}

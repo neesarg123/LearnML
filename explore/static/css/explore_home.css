@@ -72,6 +72,20 @@ header {
 	background-color: rgba(58, 214, 97, 0.5);
 }
 
+.logoutButton {
+	padding:  9px 25px;
+	margin-right: 20px;
+	background-color: rgb(255, 62, 28);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+}
+
+.logoutButton:hover {
+	background-color: rgba(255, 62, 28, 0.5);
+}
+
 .posts-content {
 	position: relative;
 	width: 95%;
@@ -84,6 +98,8 @@ header {
 	position: relative;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	border-radius: 5px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 	overflow: hidden;
 	font-family: "Roboto", sans-serif;
 	width: 45%;
@@ -92,13 +108,72 @@ header {
 	margin-top: 80px;
 }
 
+.readability-card {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	border-radius: 5px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	width: 45%;
+	margin-left: 30%;
+	margin-bottom: 10px;
+}
+
+.readability-card:hover {
+	border-bottom: 3px solid #4287f5;
+	box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.2);
+}
+
+.readability-card-container {
+	margin: 10px;
+	display: flex;
+	flex-direction: row-reverse;
+	border: 1px solid black;
+	box-sizing: border-box;
+	border-radius: 2px;
+	background: linear-gradient(to right, #f00, #ff0, #0f0);
+}
+
+.readability-card-container input {
+	display: none;
+}
+
+.readability-card-container label {
+	display: block;
+	cursor: pointer;
+	width: 40px;
+	height: 30px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.5s;
+	background: white;
+	color: black;
+	font-size: 14px;
+	border-right: 1px solid black;
+}
+
+.readability-card-container input[type="radio"]:hover ~ label,
+.readability-card-container input[type="radio"]:checked ~ label
+ {
+	background: transparent;
+
+}
+
+.post-card:hover + .readability-card {
+	border-bottom: 3px solid #4287f5;
+}
+
 .post-card-container h2 {
 	padding: 9px 25px;
 	width: 100%;
 }
 
 .post-card:hover {
-	border-bottom: 3px solid #4287f5;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -116,4 +191,16 @@ header {
 .post-audience {
 	color: #ff6652;
 	font-size: 14px;
+}
+
+.round-account-img-p {
+	display: block;
+	border-radius: 100%;
+	width: 32%;
+	height: 32%;
+	transition: all 0.3s ease 0s;
+}
+
+.round-account-img-p:hover {
+	border-bottom: 3px solid #d63a3a;
 }
