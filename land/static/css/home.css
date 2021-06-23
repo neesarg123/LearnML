@@ -433,22 +433,28 @@ legend {
 	font-family: "Roboto", sans-serif;
 }
 
-input {
+input, select {
   margin: 5px;
   border: 1px solid black;
   font-size: 16px;
   color: #543deb;
 }
 
-.form-group-down, .login-option {
+.form-group-down, .login-option, .form-group-down-create {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	font-family: "Roboto", sans-serif;
 }
 
-.sign-up-btn {
-	background-color: gray;
-  font-family: "Roboto", sans-serif;
+
+.form-group-down-create {
+	padding-left: 55px;
+}
+
+
+.sign-up-btn{
+	font-family: "Roboto", sans-serif;
   color: white;
   padding: 5px 10px;
   margin-top: -25px;
@@ -458,6 +464,21 @@ input {
   background-color: #b54dff;
   border-radius: 20px;
   transition: all 0.4s ease 0s;
+  margin-bottom: 5px;
+}
+
+.delete-btn {
+	font-family: "Roboto", sans-serif;
+  color: white;
+  padding: 5px 10px;
+  margin-top: -25px;
+  border: none;
+  cursor: pointer;
+  border: 3px solid #b54dff;
+  background-color: #b54dff;
+  border-radius: 20px;
+  transition: all 0.4s ease 0s;
+  margin-bottom: 5px;
 }
 
 .sign-up-btn:hover {
@@ -467,9 +488,22 @@ input {
 	color: black;
 }
 
+.delete-btn:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	border: 3px solid red;
+	background-color: red;
+	color: black;
+}
+
 .login-option-link-ml-2 {
 	color: blue;
 	margin-left: 2px;
+}
+
+.join-form-legend span {
+	background-color: #ffde4d;
+	color: red;
+	font-weight: 900;
 }
 
 .alert-success {
@@ -482,9 +516,18 @@ input {
 
 .content-section {
 	position: relative;
-	width: 95%;
+	width: 100%;
 	display: table;
 	height: 95%;
+}
+
+.form-group, .form-group-create {
+	width: 55%;
+
+}
+
+.form-group-create {
+	height: 600px;
 }
 
 .media-card {
@@ -500,12 +543,13 @@ input {
 	margin-top: 80px;
 	justify-content: center;
 	transition: all 0.3s ease 0s;
+	border-bottom: 5px solid #2379db;
 }
 
 .media-card:hover {
-	border-left: 5px solid #5100ff;
-	border-right: 5px solid #5100ff;
+	border-bottom: 5px solid #ff2f00;
 }
+
 
 .media-body {
 	display: block;
@@ -517,6 +561,15 @@ input {
 	display: block;
 	border-radius: 100%;
 }
+
+.round-account-img {
+	border: 2px solid #2379db;
+}
+
+.round-account-img:hover {
+	border: 2px solid #ff2f00;
+}
+
 
 .round-account-img-p {
 	width: 32%;
@@ -531,6 +584,7 @@ input {
 .account-heading {
 	display: flex;
 	justify-content: center;
+	padding-top: 10px;
 }
 
 p.account-email-text {

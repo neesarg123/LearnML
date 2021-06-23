@@ -93,7 +93,7 @@ header {
 	height: 95%;
 }
 
-.post-card {
+.post-card, .post-card-detail {
 	display: row;
 	position: relative;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -105,7 +105,38 @@ header {
 	width: 45%;
 	height: 200px;
 	margin-left: 30%;
+	margin-top: 40px;
+}
+
+.post-card-detail {
 	margin-top: 80px;
+}
+
+.post-content-container {
+	display: block;
+	padding: 9px 25px;
+}
+
+.pic-name-date {
+	display: flex;
+	padding: 9px 13px;
+}
+
+.small-prof-pic {
+	display: inline-flex;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+}
+
+.post-author-and-date {
+	display: inline-flex;
+	padding-left: 5px;
+	align-items: center;
+	opacity: 0.6;
+	font-size: 12px;
+	color: blue;
 }
 
 .readability-card {
@@ -121,10 +152,12 @@ header {
 	width: 45%;
 	margin-left: 30%;
 	margin-bottom: 10px;
+	transition: all 0.3s ease 0s;
 }
 
 .readability-card:hover {
 	border-bottom: 3px solid #4287f5;
+	border-top: 3px solid #4287f5;
 	box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.2);
 }
 
@@ -168,24 +201,21 @@ header {
 	border-bottom: 3px solid #4287f5;
 }
 
-.post-card-container h2 {
-	padding: 9px 25px;
-	width: 100%;
-}
 
 .post-card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.post-author-and-date, .post-content, .post-audience {
-	padding: 9px 25px;
-	margin-top: -10px;
+.post-title-link {
+	padding: 0px 25px;
+	width: 100%;
+	font-size: 25px;
+	font-weight: 900;
 }
 
-.post-author-and-date {
-	opacity: 0.6;
-	font-size: 12px;
-	color: blue;
+.post-audience, .post-content {
+	padding: 9px 25px;
+	margin-top: -10px;
 }
 
 .post-audience {
@@ -203,4 +233,61 @@ header {
 
 .round-account-img-p:hover {
 	border-bottom: 3px solid #d63a3a;
+}
+
+.search-btn {
+	color: #e84118;
+	float: right;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #2f3640;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.4s;
+}
+
+.search-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #2f3640;
+	margin-top: 75px;
+	height: 40px;
+	border-radius: 40px;
+	padding: 10px;
+}
+
+.search-box:hover > .search-text {
+	width: 250px;
+	padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+	color: rgb(58, 214, 97);
+}
+
+.search-text {
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition: 0.4s;
+	line-height: 40px;
+	width: 0px;
+	font-family: "Roboto", sans-serif;
+}
+
+.filter-sections {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fas {
+	background-color: #2f3640;
 }

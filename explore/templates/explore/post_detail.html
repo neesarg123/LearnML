@@ -1,0 +1,21 @@
+{% extends "explore/base.html" %}
+
+{% block section %}
+<section class="posts-section">
+	<div class="posts-content">
+		<div class="post-card-detail">
+			<div class="post-card-container">
+				<div class="pic-name-date">
+					<img class="small-prof-pic" src="{{ object.author.profile.image.url }}">
+					<p class="post-author-and-date">{{ object.author }}, {{ object.date_posted|date:"N d, Y" }}</p>
+				</div>
+				<h2 class="post-title-link">{{ object.title }}</h2>
+				<p class="post-audience">{{ object.audience }}</p>
+				<div class=post-content-container>
+					<p class="post-content">{{ object.content|safe }}</p>
+				</div>
+				
+			</div>
+		</div>
+</section>
+{% endblock section %}
