@@ -21,13 +21,17 @@ class PostListView(ListView):
 
 	def get_queryset(self):
 		ordering = ['-date_posted']
-		search_query = self.request.GET.get('search-post')
+		search_query = self.request.GET.get('search_post')
+		audience_query = self.request.GET.get('audience_filter')
 			
 		object_list = self.model.objects.all().order_by('-date_posted')
 
 		if search_query != '' and search_query is not None:
 			object_list = object_list.filter(Q(title__icontains=search_query) | 
 				Q(content__icontains=search_query)).distinct()
+
+		if audience_query != '' and audience_query is not None:
+			object_list = object_list.filter(audience__iexact=audience_query)
 		
 		return object_list
 

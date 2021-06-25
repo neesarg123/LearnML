@@ -1,10 +1,15 @@
 {% extends "explore/base.html" %}
 
 {% block section %}
-<section class="posts-section">
-	<div class="posts-content">
-		<div class="post-card-detail">
-			<div class="post-card-container">
+
+<section class="posts-section-d">
+	<div class='scroll-div'>
+		<input id='scroll_height' value="" disabled></input>
+	</div>
+	<div class="posts-content-d">
+		<div class="post-card-detail-d">
+
+			<div class="post-card-container-d", id="post-card-container-d">
 				<div class="pic-name-date">
 					<img class="small-prof-pic" src="{{ object.author.profile.image.url }}">
 					<p class="post-author-and-date">{{ object.author }}, {{ object.date_posted|date:"N d, Y" }}</p>
@@ -15,7 +20,15 @@
 					<p class="post-content">{{ object.content|safe }}</p>
 				</div>
 				
+				
 			</div>
 		</div>
 </section>
+<script type="text/javascript">
+	window.onscroll = function () {
+		var elem = document.getElementById("post-card-container-d");
+		document.getElementById('scroll_height').value = '{{ object.title }} | {{ object.author }} | ' + Math.ceil((Math.ceil((scrollY + window.innerHeight - 100) / (elem.clientHeight) * 100)) / 5) * 5 + '%'
+	};
+
+</script>
 {% endblock section %}

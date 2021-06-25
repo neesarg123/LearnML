@@ -3,13 +3,60 @@
 {% block section %}
 <section class="filter-sections">
 	<form method="GET" action=".">
-		<div class="search-box">
-			<input class="search-text" type="text" name="search-post" placeholder="search your curiosity">
-			<a class="search-btn" type="submit" href="#">
-				<i class="fas fa-space-shuttle"></i>
-			</a>
+		<div class="search-form">
+			<div class="search-box">
+				{% if 'search_post' in request.get_full_path %}
+					<input class="search-text" type="text" name="search_post" value="{{ request.GET.search_post }}" placeholder="search your curiosity">
+				{% else %}
+					<input class="search-text" type="text" name="search_post" placeholder="search your curiosity">
+				{% endif %}
+				<button class="search-btn" type="submit">
+					<i class="fas fa-space-shuttle"></i>
+				</button>
+			</div>
+		</div>
+		<div class="audience-form">
+			<div class="audience-selection">
+				{% if 'audience_filter' not in request.get_full_path or request.GET.audience_filter == '' or 'search_post' not in request.get_full_path %}			
+				<button class="audience-btn-all-selected" type="submit" value="" name="audience_filter">
+					all
+				</button>
+				{% else %}
+				<button class="audience-btn-all" type="submit" value="" name="audience_filter">
+					all
+				</button>
+				{% endif %}
+				{% if  'audience_filter=BEG' in request.get_full_path %}	
+				<button class="audience-btn-beg-selected" type="submit" value="BEG" name="audience_filter">
+					beginner
+				</button>
+				{% else %}
+				<button class="audience-btn-beg" type="submit" value="BEG" name="audience_filter">
+					beginner
+				</button>
+				{% endif %}
+				{% if 'audience_filter=INT' in request.get_full_path%}
+				<button class="audience-btn-int-selected" type="submit" value="INT" name="audience_filter">
+					intermediate
+				</button>
+				{% else %}
+				<button class="audience-btn-int" type="submit" value="INT" name="audience_filter">
+					intermediate
+				</button>
+				{% endif %}
+				{% if  'audience_filter=EXP' in request.get_full_path %}
+				<button class="audience-btn-exp-selected" type="submit" value="EXP" name="audience_filter">
+					expert
+				</button>
+				{% else %}
+				<button class="audience-btn-exp" type="submit" value="EXP" name="audience_filter">
+					expert
+				</button>
+				{% endif %}
+			</div>		
 		</div>
 	</form>
+	
 	
 </section>
 <section class="posts-section">

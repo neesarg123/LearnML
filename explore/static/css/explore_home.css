@@ -117,6 +117,19 @@ header {
 	padding: 9px 25px;
 }
 
+.posts-content-d {
+	display: block;
+	width: 95%;
+	font-family: "Roboto", sans-serif;
+	justify-content: center;
+	align-items: center;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 70px;
+	margin-bottom: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);;
+}
+
 .pic-name-date {
 	display: flex;
 	padding: 9px 13px;
@@ -208,7 +221,6 @@ header {
 
 .post-title-link {
 	padding: 0px 25px;
-	width: 100%;
 	font-size: 25px;
 	font-weight: 900;
 }
@@ -241,11 +253,20 @@ header {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
+	border: none;
 	background: #2f3640;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	transition: 0.4s;
+	cursor: pointer;
+
+}
+
+.search-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .search-box {
@@ -253,7 +274,7 @@ header {
 	justify-content: center;
 	align-items: center;
 	background: #2f3640;
-	margin-top: 75px;
+	margin-top: 85px;
 	height: 40px;
 	border-radius: 40px;
 	padding: 10px;
@@ -266,6 +287,7 @@ header {
 
 .search-box:hover > .search-btn {
 	color: rgb(58, 214, 97);
+	transform: rotate(-90deg);
 }
 
 .search-text {
@@ -283,11 +305,123 @@ header {
 }
 
 .filter-sections {
-	display: flex;
+	display: block;
 	justify-content: center;
 	align-items: center;
 }
 
 .fas {
 	background-color: #2f3640;
+}
+
+.audience-form {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	padding-top: 10px;
+}
+
+.audience-btn-all, .audience-btn-beg, .audience-btn-int, .audience-btn-exp {
+	font-family: "Roboto", sans-serif;
+	border: none;
+	cursor: pointer;
+	padding: 9px 25px;
+	width: 150px;
+	transition: 0.5s ease 0s;
+	background-color: #c4c4c4;
+
+}
+
+.audience-btn-all-selected, .audience-btn-beg-selected, .audience-btn-int-selected, .audience-btn-exp-selected {
+	font-family: "Roboto", sans-serif;
+	border: none;
+	cursor: pointer;
+	padding: 9px 25px;
+	width: 150px;
+	transition: 0.5s ease 0s;
+	background-color: #FFDC00;
+}
+
+.audience-btn-all-selected {
+	background-color: none;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-all-selected {
+	border-bottom: 5px solid black;
+	background-color: #FFDC00;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-selection {
+	background-color: #c4c4c4;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+
+.audience-btn-beg-selected {
+	border-bottom: 5px solid #5ecf2d;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-int-selected {
+	border-bottom: 5px solid #f58d16;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-exp-selected {
+	border-bottom: 5px solid #f53716;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-all:hover {
+	border-bottom: 5px solid black;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-beg:hover {
+	border-bottom: 5px solid #5ecf2d;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-int:hover {
+	border-bottom: 5px solid #f58d16;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.audience-btn-exp:hover {
+	border-bottom: 5px solid #f53716;
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+#scroll_height {
+	position: relative;
+
+  display: inline-flex;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  font-weight: bold;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.scroll-div {
+	position: fixed;
+  	top: 60px;
+  	left: 0;
+  	z-index: 2;
+  	width: 100%;
+  	height: 20px;
+	display: flex;
+	
+
+}
+
+.post-card-container-d {
+	border-right: 3px solid lightblue;
+	border-left: 3px solid lightblue;
+	border-bottom: 3px solid lightblue;
 }
