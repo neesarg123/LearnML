@@ -3,18 +3,21 @@
 
 {% block section %}
 	<div class='content-section'>
-		<form method="POST">
+		<form method="POST" class="login-form">
 			{% csrf_token %}
 			<fieldset class="form-group-create">
-				<legend class="join-form-legend">share your knowledge with the world</legend>
-				<div class="form-container">
+				<div class="form-container-create">
 					{{ form.media }}
 					{{ form|crispy }}
 				</div>
+				<div class="form-group-down-create">
+					<button class='post-btn' type="submit">post</button>
+				</div>
 			</fieldset>
-			<div class="form-group-down-create">
-				<button class='sign-up-btn' type="submit">post</button>
-			</div>
+			
 		</form>
 	</div>
+	<script type="text/javascript">
+		document.getElementById("id_title").placeholder = "Title";
+	</script>
 {% endblock section %}

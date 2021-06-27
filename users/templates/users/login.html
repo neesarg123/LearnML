@@ -1,22 +1,44 @@
 {% extends "land/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block section %}
 	<div class='content-section'>
-		<form method="POST">
+		<form method="POST" class="login-form">
 			{% csrf_token %}
-			<fieldset class="form-group">
-				<legend class="join-form-legend">Login</legend>
+			<fieldset class="form-group-login">
 				<div class="form-container">
+					<div class="logo-container-login">
+						<a id="logo-link" href="/">
+							<img class="logo-login" src="{% static 'images/logo.svg' %}" alt="logo">
+						</a>
+					</div>
+					
 					{{ form|crispy }}
 				</div>
+				<a class="forgot-option-link" href="{% url 'password_reset' %}">forgot password?</a>
+				<div class="form-group-down">
+					<button class='login-btn' type="submit">login</button>
+				</div>
+				<div class="other-auth-container">
+					<small class="auth-desc">or you can sign in with<br><a href="/accounts/google/login/?process=login"><i id="google-icon" class="fab fa-google"></i></a></small>
+
+				</div>
 			</fieldset>
-			<div class="form-group-down">
-				<button class='sign-up-btn' type="submit">login</button>
-			</div>
 		</form>
 		<div class="login-option">
 			<small class="login-option-text">don't have an account? <a class="login-option-link-ml-2" href="{% url 'register' %}">sign up</a></small>
 		</div>
+		<div class="rocket-stages-container">
+			<img class="s1-img" src="{% static 'images/rocket_s1.svg' %}">
+			<img class="s2-img" src="{% static 'images/rocket_s2.svg' %}">
+			<img class="s3-img" src="{% static 'images/rocket_s3.svg' %}">
+			
+		</div>
 	</div>
+
+	<script type="text/javascript">
+		document.getElementById("id_username").placeholder = "Username";
+		document.getElementById("id_password").placeholder = "🔑 Password";
+	</script>
 {% endblock section %}

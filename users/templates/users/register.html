@@ -1,22 +1,40 @@
 {% extends "land/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block section %}
 	<div class='content-section'>
-		<form method="POST">
+		<form method="POST" class="login-form">
 			{% csrf_token %}
-			<fieldset class="form-group">
-				<legend class="join-form-legend">join today</legend>
+			<fieldset class="form-group-signup">
 				<div class="form-container">
+					<div class="logo-container-login">
+						<a id="logo-link" href="/">
+							<img class="logo-login" src="{% static 'images/logo.svg' %}" alt="logo">
+						</a>
+					</div>
 					{{ form|crispy }}
 				</div>
+				<div class="form-group-down">
+					<button class='sign-up-btn' type="submit">sign up</button>
+				</div>
 			</fieldset>
-			<div class="form-group-down">
-				<button class='sign-up-btn' type="submit">sign up</button>
-			</div>
 		</form>
 		<div class="login-option">
 			<small class="login-option-text">already have an account? <a class="login-option-link-ml-2" href="{% url 'login' %}">login</a></small>
 		</div>
+		<div class="rocket-stages-container">
+			<img class="s1-img" src="{% static 'images/rocket_s1.svg' %}">
+			<img class="s2-img" src="{% static 'images/rocket_s2.svg' %}">
+			<img class="s3-img" src="{% static 'images/rocket_s3.svg' %}">
+			
+		</div>
 	</div>
+
+	<script type="text/javascript">
+		document.getElementById("id_username").placeholder = "Username";
+		document.getElementById("id_email").placeholder = "Email";
+		document.getElementById("id_password1").placeholder = "Password";
+		document.getElementById("id_password2").placeholder = "Confirm Password";
+	</script>
 {% endblock section %}

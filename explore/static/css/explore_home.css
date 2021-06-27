@@ -150,6 +150,7 @@ header {
 	opacity: 0.6;
 	font-size: 12px;
 	color: blue;
+	width: 100%;
 }
 
 .readability-card {
@@ -166,10 +167,10 @@ header {
 	margin-left: 30%;
 	margin-bottom: 10px;
 	transition: all 0.3s ease 0s;
+	border-bottom: 3px solid #4287f5;
 }
 
 .readability-card:hover {
-	border-bottom: 3px solid #4287f5;
 	border-top: 3px solid #4287f5;
 	box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.2);
 }
@@ -210,19 +211,18 @@ header {
 
 }
 
-.post-card:hover + .readability-card {
-	border-bottom: 3px solid #4287f5;
-}
-
 
 .post-card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .post-title-link {
+	display: inline-flex;
 	padding: 0px 25px;
 	font-size: 25px;
 	font-weight: 900;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .post-audience, .post-content {
@@ -406,6 +406,7 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: #3eb9c7;
 }
 
 .scroll-div {
@@ -420,8 +421,98 @@ header {
 
 }
 
-.post-card-container-d {
+.post-card-detail-d {
 	border-right: 3px solid lightblue;
 	border-left: 3px solid lightblue;
 	border-bottom: 3px solid lightblue;
+}
+
+.edit-delete-container {
+	display: inline-flex;
+	position: relative;
+	justify-content: space-around;
+	width: 10%;
+	align-items: center;
+}
+
+#edit-link, #delete-link {
+	position: relative;
+	background: white;
+	color: lightgray;
+}
+
+#edit-link:hover {
+	color: #ebbc02;
+	transform: scale(2.1);
+}
+
+#delete-link:hover {
+	color: red;
+	transform: scale(2.1);
+}
+
+#post-create-link {
+	background: white;
+	transform: scale(1.5);
+	transition: all 0.4s ease 0s;
+	color: #63bf2e;
+	border-radius: 50%;
+}
+
+#post-create-link:hover {
+	transform: scale(2);
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.pagination-container {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding-top: 20px;
+	padding-left: 32px;
+
+}
+
+.page-1-link, .page-link, .page-current-link, .page-around-link, .page-next-link, .page-last-link {
+	width: fit-content;
+	padding: 2px 3%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 2px;
+	margin-bottom: 10px;
+	color: #261C15;
+	transition: all 0.4s ease 0s;
+}
+
+.page-1-link:hover, .page-link:hover, .page-around-link:hover, .page-next-link:hover, .page-last-link:hover {
+	border-bottom: 2px solid black;
+}
+
+
+.page-current-link {
+	border-radius: 5px;
+	background-color: #F05D23;
+}
+
+#ff {
+	background-color: white;
+}
+
+.more-user-posts-h2 {
+	margin-top: 80px;
+	border-top: thin solid #887aff;
+	border-bottom: thin solid #887aff;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	font-style: italic;
+	justify-content: center;
+}
+
+#user-name-h2 {
+	background: transparent;
+	color: #B4B4FF;
+	padding-left: 5px;
+	padding-right: 5px;
 }

@@ -1,20 +1,21 @@
 {% extends "land/base.html" %}
-
+{% load static %}
 {% block section %}
 	<div class='content-section'>
 		<form method="POST">
 			{% csrf_token %}
-			<fieldset class="form-group">
-				<legend class="join-form-legend">do you really want to delete: <span>{{ object.title }}</span>?</legend>
-				<div class="form-container">
+			<fieldset class="form-group-delete">
+				<div class="delete-container">
+					<img class="trash" src="{% static 'images/hrum-trash.svg' %}" alt="mail">
+					<div class="mail-desc-container">
+						<h2 class="check-mail-h2">do you really want to delete: {{ object.title }}?</h2>	
+						<button class='delete-btn' type="submit">yes, delete!</button>	
+						<small class="delete-option-text">don't want to? <a class="delete-option-link-ml-2" href="{% url 'post-detail' object.id object.title %}">cancel</a></small>
+					</div>
 				</div>
+				
 			</fieldset>
-			<div class="form-group-down">
-				<button class='delete-btn' type="submit">yes, delete!</button>
-			</div>
-			<div class="login-option">
-			<small class="login-option-text">don't want to? <a class="login-option-link-ml-2" href="{% url 'post-detail' object.id object.title %}">cancel</a></small>
-			</div>
+			
 		</form>
 	</div>
 {% endblock section %}

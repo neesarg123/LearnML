@@ -38,6 +38,9 @@
 				<a class="cta" href="{% url 'profile' %}">
 					<img class="round-account-img-p" src="{{ user.profile.image.url }}" alt="{{ user|make_list|first }}">
 				</a>
+				<a class="cta" href="{% url 'post-create' %}">
+					<i id="post-create-link" class="fas fa-plus-circle"></i>
+				</a>
 				<a class="cta" href="{% url 'logout' %}">
 					<button class="logoutButton">logout</button>
 				</a>

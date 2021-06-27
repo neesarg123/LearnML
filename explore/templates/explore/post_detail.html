@@ -8,14 +8,23 @@
 	</div>
 	<div class="posts-content-d">
 		<div class="post-card-detail-d">
-
 			<div class="post-card-container-d", id="post-card-container-d">
 				<div class="pic-name-date">
 					<img class="small-prof-pic" src="{{ object.author.profile.image.url }}">
-					<p class="post-author-and-date">{{ object.author }}, {{ object.date_posted|date:"N d, Y" }}</p>
+					<p class="post-author-and-date"><a class="post-author-and-date" href="{% url 'user-posts' post.author.username %}">{{ object.author }}, {{ object.date_posted|date:"N d, Y" }}</a></p>
+					
+					{% if user == object.author %}
+						<div class="edit-delete-container">
+							<a href="update">
+								<i id="edit-link" class="fas fa-pencil-alt"></i></a>
+							<a href="delete">
+								<i id="delete-link" class="fas fa-trash-alt"></i></a>
+						</div>
+					{% endif %}
 				</div>
 				<h2 class="post-title-link">{{ object.title }}</h2>
 				<p class="post-audience">{{ object.audience }}</p>
+
 				<div class=post-content-container>
 					<p class="post-content">{{ object.content|safe }}</p>
 				</div>

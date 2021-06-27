@@ -402,19 +402,212 @@ input.question:focus {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-fieldset {
+.login-form, .profile-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.profile-form {
+	margin-top: 40px;
+	border-bottom: 3px solid lightcyan;
+}
+
+
+.form-group-login, .form-group-profile, .form-group-create, #div_id_password1, #div_id_password2, #div_id_username, #div_id_password, .form-group-down, .forgot-option-link, .other-auth-container, .auth-desc, #google-icon {
+	background-color: #F0A7A0;
+}
+
+#id_username, #id_password, #id_email, #id_password1, #id_password2 {
+	outline: none;
+	border: 2px solid #F0A7A0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+#id_password2 {
+	margin-left: 33%;
+}
+
+#div_id_password2 {
+	display: block;
+}
+
+#error_1_id_password2, #error_2_id_password2, #error_3_id_password2, #error_1_id_email {
+	background-color: #F0A7A0;
+	color: darkred;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	text-align: center;
+}
+
+#error_1_id_password2 strong, #error_2_id_password2 strong, #error_3_id_password2 strong, #error_1_id_email strong {
+	background-color: #F0A7A0;
+}
+
+#div_id_password1 label, #div_id_password2 label, #div_id_image label {
+	display: none;
+}
+
+#div_id_image div, #div_id_image input, #div_id_image a {
+	font-size: 12px;
+	text-align: center;
+	line-height: 1.4;
+	background-color: #F0A7A0;
+}
+
+#div_id_image {
+	background-color: #F0A7A0;
+}
+
+#div_id_username, #div_id_email, #div_id_password1, #div_id_password2, #div_id_image {
+	padding-bottom: 10px;
+}
+
+
+.logo-login, #logo-link {
+	background-color: #F0A7A0;
+}
+
+.logo-container-login, .form-container-profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #F0A7A0;
+	padding-bottom: 20px;
+}
+
+.form-container-profile {
+	display: inline-block;
+	padding-top: 20px;
+	padding-bottom: 5px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.form-group-login, .form-group-signup, .form-group-reset, .form-group-create {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	border-radius: 5px;
+	border-radius: 25px;
 	overflow: hidden;
 	font-family: "Roboto", sans-serif;
-	width: 50%;
-	margin-top: 5%;
-	margin-left: 25%;
-	display: table;
+	width: 30%;
+	height: fit-content;
+	margin-top: 10%;
+	display: block;
+	justify-content: center;
+	align-items: flex-start;
 	border: none;
 	margin-bottom: 10px;
 	transition: all 0.4s ease 0s;
 }
+
+.form-group-profile {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 25px;
+	overflow: hidden;
+	font-family: "Roboto", sans-serif;
+	transition: all	0.4s ease 0s;
+	margin-bottom: 30px;
+	border: none;
+	margin-left: 30px;
+	border: 3px solid blue;
+}
+
+.form-group-profile:hover {
+	border: 3px solid red;
+}
+
+.form-group-create {
+	border: 3px solid blue;
+}
+
+.form-group-signup {
+	width: 50%;
+}
+
+.form-group-down {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.login-btn, .sign-up-btn, .reset-btn, .post-btn, .update-btn {
+	width: 30%;
+	border-radius: 50px;
+	height: 30px;
+	border: none;
+	background: linear-gradient(to right, #f1da36 0%,#fca86c 99%);
+	transition: all 0.5s ease 0s;
+}
+
+.reset-btn {
+	width: fit-content;
+	padding: 2px 10%;
+}
+
+.update-btn {
+	margin-bottom: 15px;
+}
+
+.sign-up-btn, .post-btn {
+	margin-bottom: 10px;
+}
+
+.login-btn:hover, .update-btn:hover, .sign-up-btn:hover, .reset-btn:hover, .post-btn:hover {
+	transform: scale(1.2);
+	background: linear-gradient(45deg, #f1da36 0%,#fca86c 99%);
+}
+
+
+
+.forgot-option-link {
+	display: flex;
+	margin-top: -20px;
+	padding-bottom: 10px;
+	color: darkslategray;
+	font-size: 14px;
+	justify-content: center;
+	align-items: center;
+}
+
+.other-auth-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.auth-desc {
+	display: block;
+	color: gray;
+	font-size: 14px;
+}
+
+#google-icon {
+	color: black;
+	padding-top: 10px;
+	padding-left: 45%;
+	cursor: pointer;
+	padding-bottom: 10px;
+}
+
+
+.m-0 li, #hint_id_username {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	background-color: #F0A7A0;
+	padding-bottom: 5px;
+	color: darkred;
+	margin: 0;
+}
+
+
 
 fieldset:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -428,9 +621,14 @@ legend {
   padding: 5px 10px;
 }
 
-.form-container {
-	margin: 30px;
+.form-container, .form-container-create {
+	padding: 30px;
 	font-family: "Roboto", sans-serif;
+	background-color: #F0A7A0;
+}
+
+.form-container-create {
+	background-color: white;
 }
 
 input, select {
@@ -440,38 +638,79 @@ input, select {
   color: #543deb;
 }
 
-.form-group-down, .login-option, .form-group-down-create {
+.login-option, .form-group-down-create, .form-group-down-profile {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-family: "Roboto", sans-serif;
 }
 
+.form-group-down-profile {
+	background-color: #F0A7A0;
+}
 
-.form-group-down-create {
-	padding-left: 55px;
+.login-option {
+	margin-top: 1px;
+}
+
+.rocket-stages-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.s1-img, .s2-img, .s3-img {
+	
+	margin: -30px 5%;
+	border: none;
+	outline: none;
+	transform: scale(0.5) rotate(90deg);
+}
+
+.s1-img {
+	animation: slide-in 4s forwards;
+  -webkit-animation: slide-in 4s forwards infinite;
+  z-index: 2;
+}
+
+.s2-img {
+	animation: slide-in-s2 4s forwards;
+  -webkit-animation: slide-in-s2 4s forwards infinite;
+	z-index: 1;
+}
+
+.s3-img {
+	animation: slide-in-s3 4s forwards;
+  -webkit-animation: slide-in-s3 4s forwards infinite;
+  z-index: 0;
+}
+
+@keyframes slide-in {
+    50% {
+    	transform:  scale(0.5) rotate(90deg) translateY(-240px);
+    }
+}
+
+@keyframes slide-in-s2 {
+    50% {
+    	transform:  scale(0.5) rotate(450deg);
+    }
+}
+
+@keyframes slide-in-s3 {
+    50% {
+    	transform:  scale(0.5) rotate(90deg) translateY(250px);
+    }
 }
 
 
-.sign-up-btn{
-	font-family: "Roboto", sans-serif;
-  color: white;
-  padding: 5px 10px;
-  margin-top: -25px;
-  border: none;
-  cursor: pointer;
-  border: 3px solid #b54dff;
-  background-color: #b54dff;
-  border-radius: 20px;
-  transition: all 0.4s ease 0s;
-  margin-bottom: 5px;
-}
 
 .delete-btn {
 	font-family: "Roboto", sans-serif;
+	font-size: 100px;
   color: white;
-  padding: 5px 10px;
-  margin-top: -25px;
+  padding: 5px 20px;
   border: none;
   cursor: pointer;
   border: 3px solid #b54dff;
@@ -495,9 +734,25 @@ input, select {
 	color: black;
 }
 
-.login-option-link-ml-2 {
+.login-option-link-ml-2, .delete-option-link-ml-2 {
 	color: blue;
 	margin-left: 2px;
+	font-size: 14px;
+}
+
+.delete-option-link-ml-2, .delete-option-text {
+	font-family: 'Roboto', sans-serif;
+	font-size: 60px;
+}
+
+.delete-option-text {
+	padding-left: 10px;
+}
+
+.join-form-legend {
+	font-size: 20px;
+	font-weight: bold;
+	display: flex;
 }
 
 .join-form-legend span {
@@ -517,17 +772,91 @@ input, select {
 .content-section {
 	position: relative;
 	width: 100%;
-	display: table;
+	display: block;
 	height: 95%;
 }
 
-.form-group, .form-group-create {
-	width: 55%;
+.trash {
+	transform: scale(0.7);
+}
+
+
+#div_id_email {
+	background-color: #F0A7A0;
+}
+
+#hint_id_password1 ul, #hint_id_password2 {
+	display: none;
+}
+
+#div_id_username div, #div_id_password1 div, #div_id_password2 div {
+	display: block;
+	background-color: #F0A7A0;
+}
+
+#div_id_username label {
+	display: none;
+}
+
+#div_id_password label {
+	display: none;
+}
+
+#div_id_title label, #div_id_audience label, #div_id_content label {
+	display: none;
+}
+
+#id_username::placeholder, #id_password::placeholder, #id_email::placeholder, #id_title::placeholder, #id_password1::placeholder, #id_password2::placeholder {
+	opacity: 0.5;
+}
+
+.form-group-reset {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+	width: 30%;
+	height: 110px;
+	background-color: #F0A7A0;
+	padding-top: 10px;
 
 }
 
-.form-group-create {
-	height: 600px;
+.form-group-down-reset {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #F0A7A0;
+	margin-top: 20px;
+}
+
+.reset-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-container-reset {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #F0A7A0;
+}
+
+.form-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+
+#hint_id_username {
+	display: none;
+}
+
+#div_id_email label {
+	display: none;
 }
 
 .media-card {
@@ -591,3 +920,87 @@ p.account-email-text {
 	display: flex;
 	justify-content: center;
 }
+
+#post-create-link {
+	background: white;
+	transform: scale(1.5);
+	transition: all 0.4s ease 0s;
+	color: #63bf2e;
+	border-radius: 50%;
+}
+
+#post-create-link:hover {
+	transform: scale(2);
+	box-shadow: 1px 0px 8px 1px rgba(0,0,0,0.2);
+}
+
+.reset-done-container {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin-top: -20%;
+	width: 100%;
+	transform: scale(0.3);
+	transition: all 1.4s ease 0s;
+}
+
+.form-group-delete {
+	border: none;
+	height: 600px;
+}
+
+.form-group-down-delete {
+	margin-top: -80%;
+}
+
+.delete-container {
+	margin: 0;
+	margin-top: -45%;
+	transform: scale(0.3);
+	transition: all 1.4s ease 0s;
+}
+
+.reset-complete-container {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 5%;
+	transform: scale(0.3);
+	transition: all 1.4s ease 0s;
+}
+
+.mail-desc-container {
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
+}
+
+.check-mail-h2 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 100px;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+}
+
+.mail-span {
+	margin-left: 20px;
+	color: #DE8787;
+}
+
+.check-mail-small {
+	display: block;
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	font-size: 45px;
+}
+
+.reset-done-container:hover, .reset-complete-container:hover {
+	transform: scale(0.4);
+}
+

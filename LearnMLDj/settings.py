@@ -25,7 +25,7 @@ SECRET_KEY = 'dzkeh@x)4j78^nj^g$-6#l#3__%^tv&1t(w6o#+7le%&)2*c$0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "192.168.0.115", "192.168.0.121"]
+ACCOUNT_EMAIL_REQUIRED = True
 
 
 # Application definition
@@ -44,7 +44,14 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'ckeditor',
     'tinymce',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,3 +175,16 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 650, 
     'height': 375,
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = os.environ.get('EMAIL_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
