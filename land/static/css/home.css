@@ -402,23 +402,59 @@ input.question:focus {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.login-form, .profile-form {
+.login-form, .profile-form, .confirm-form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 50%;
 }
 
-.profile-form {
+.profile-form{
 	margin-top: 40px;
 	border-bottom: 3px solid lightcyan;
 }
 
+.form-container-confirm {
+	display: block;
+}
 
-.form-group-login, .form-group-profile, .form-group-create, #div_id_password1, #div_id_password2, #div_id_username, #div_id_password, .form-group-down, .forgot-option-link, .other-auth-container, .auth-desc, #google-icon {
+.confirm-form {
+	display: block;
+	width: 30%;
+	margin-left: 35%;
+	margin-top: 100px;
+	background-color: #F0A7A0;
+	border-radius: 50px;
+}
+
+.form-group-down-confirm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	width: 100%;
+	height: fit-content;
+	padding-bottom: 20px;
 	background-color: #F0A7A0;
 }
 
-#id_username, #id_password, #id_email, #id_password1, #id_password2 {
+#id_new_password1, #id_new_password2 {
+	margin: 0;
+}
+
+#div_id_new_password1 label, #div_id_new_password2 label {
+	display: none;
+}
+
+#div_id_new_password1 ul {
+	display: none;
+}
+
+.form-group-login, .form-container-confirm, .form-group-profile, .form-group-create, #div_id_password1, #div_id_password2, #div_id_username, #div_id_password, .form-group-down, .forgot-option-link, .other-auth-container, .auth-desc, #google-icon {
+	background-color: #F0A7A0;
+}
+
+#id_username, #id_password, #id_email, #id_password1, #id_new_password1, #id_password2, #id_new_password2 {
 	outline: none;
 	border: 2px solid #F0A7A0;
 	display: flex;
@@ -431,11 +467,15 @@ input.question:focus {
 	margin-left: 33%;
 }
 
+#id_new_password2 {
+	margin-left: 0%;
+}
+
 #div_id_password2 {
 	display: block;
 }
 
-#error_1_id_password2, #error_2_id_password2, #error_3_id_password2, #error_1_id_email {
+#error_1_id_password2, #error_1_id_new_password2, #error_2_id_new_password2, #error_3_id_new_password2, #error_2_id_password2, #error_3_id_password2, #error_1_id_email {
 	background-color: #F0A7A0;
 	color: darkred;
 	font-family: 'Roboto', sans-serif;
@@ -443,7 +483,7 @@ input.question:focus {
 	text-align: center;
 }
 
-#error_1_id_password2 strong, #error_2_id_password2 strong, #error_3_id_password2 strong, #error_1_id_email strong {
+#error_1_id_password2 strong, #error_1_id_new_password2 strong, #error_2_id_new_password2 strong, #error_3_id_new_password2 strong, #error_2_id_password2 strong, #error_3_id_password2 strong, #error_1_id_email strong {
 	background-color: #F0A7A0;
 }
 
@@ -789,7 +829,7 @@ input, select {
 	display: none;
 }
 
-#div_id_username div, #div_id_password1 div, #div_id_password2 div {
+#div_id_username div, #div_id_password1 div, #div_id_password2 div, #div_id_new_password2 div {
 	display: block;
 	background-color: #F0A7A0;
 }
@@ -806,7 +846,7 @@ input, select {
 	display: none;
 }
 
-#id_username::placeholder, #id_password::placeholder, #id_email::placeholder, #id_title::placeholder, #id_password1::placeholder, #id_password2::placeholder {
+#id_username::placeholder, #id_password::placeholder, #id_email::placeholder, #id_title::placeholder, #id_new_password1::placeholder, #id_password1::placeholder, #id_new_password2::placeholder, #id_password2::placeholder {
 	opacity: 0.5;
 }
 
@@ -1004,3 +1044,15 @@ p.account-email-text {
 	transform: scale(0.4);
 }
 
+#div_id_new_password1, #div_id_new_password2 {
+	padding-top: 20px;
+	background-color: #F0A7A0;
+}
+
+.form-group-confirm {
+	border: none;
+}
+
+.form-group-confirm:hover {
+	box-shadow: none;
+}
