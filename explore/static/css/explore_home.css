@@ -175,42 +175,32 @@ header {
 	box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.2);
 }
 
-.readability-card-container {
+.like-card-container {
 	margin: 10px;
 	display: flex;
-	flex-direction: row-reverse;
-	border: 1px solid black;
-	box-sizing: border-box;
-	border-radius: 2px;
-	background: linear-gradient(to right, #f00, #ff0, #0f0);
 }
 
-.readability-card-container input {
-	display: none;
+.like-form button {
+	border: none;
 }
 
-.readability-card-container label {
-	display: block;
+#heart-ic-sp, #heart-ic, #empty-heart-ic {
+	border: none;
+	background-color: white;
+}
+
+#heart-ic, #empty-heart-ic {
 	cursor: pointer;
-	width: 40px;
-	height: 30px;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	transition: 0.5s;
-	background: white;
-	color: black;
-	font-size: 14px;
-	border-right: 1px solid black;
+	transition: all 0.4s ease 0s;
 }
 
-.readability-card-container input[type="radio"]:hover ~ label,
-.readability-card-container input[type="radio"]:checked ~ label
- {
-	background: transparent;
-
+#empty-heart-ic {
+	color: #c71b04;
 }
 
+#heart-ic:hover {
+	color: #c71b04;
+}
 
 .post-card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

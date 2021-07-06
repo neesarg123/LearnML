@@ -1,17 +1,42 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post, Like
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from django.http import JsonResponse
 
 # Create your views here.
-def explore(request):
-	context = {
-		'posts': Post.objects.all()
-	}
-	return render(request, 'explore/explore.html', context)
+def like_post(request):
+	user = request.user
+	if request.method == 'POST':
+		post_id = request.POST.get('post_id')
+		post_obj = Post.objects.get(id=post_id)
+
+		if user in post_obj.likes.all():
+			post_obj.likes.remove(user)
+		else:
+			post_obj.likes.add(user)
+
+		like, created = Like.objects.get_or_create(user=user, post_id=post_id)
+
+		if not created:
+			if like.value == 'Like':
+				like.value = 'Dislike'
+			else:
+				like.value = 'Like'
+		
+		post_obj.save()		
+		like.save()
+
+		data = {
+			'value': like.value,
+			'num_likes': post_obj.likes.all().count()
+		}
+
+		return JsonResponse(data, safe=False)
+
+	return redirect('explore-home')
 
 
 class PostListView(ListView):
@@ -21,11 +46,11 @@ class PostListView(ListView):
 	paginate_by = 5
 
 	def get_queryset(self):
-		ordering = ['-date_posted']
+		#ordering = ['-date_posted']
 		search_query = self.request.GET.get('search_post')
 		audience_query = self.request.GET.get('audience_filter')
 			
-		object_list = self.model.objects.all().order_by('-date_posted')
+		object_list = self.model.objects.all().order_by('-likes', '-date_posted')
 
 		if search_query != '' and search_query is not None:
 			object_list = object_list.filter(Q(title__icontains=search_query) | 
