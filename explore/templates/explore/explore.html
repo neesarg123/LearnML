@@ -97,29 +97,48 @@
 		{% endif %}
 		{% endfor %}
 
-
-
 		<div class="pagination-container">
 			{% if is_paginated %}
 				{% if page_obj.has_previous %}
-					<a class='page-1-link' href="?page=1">
+					{% if 'audience_filter' in request.get_full_path or 'search_post' in request.get_full_path %}
+						<a class='page-1-link' href="{{ request.get_full_path }}&page=1">
+							<i id="ff" class="fas fa-fast-backward"></i></a>
+						<a class='page-link' href="{{ request.get_full_path }}&page={{ page_obj.previous_page_number }}">
+							<i id="ff" class="fas fa-backward"></i></a>
+					{% else %}
+						<a class='page-1-link' href="?page=1">
 						<i id="ff" class="fas fa-fast-backward"></i></a>
-					<a class='page-link' href="?page={{ page_obj.previous_page_number }}">
-						<i id="ff" class="fas fa-backward"></i></a>
+						<a class='page-link' href="?page={{ page_obj.previous_page_number }}">
+							<i id="ff" class="fas fa-backward"></i></a>
+					{% endif %}
 				{% endif %}
 
 				{% for num in page_obj.paginator.page_range %}
 					{% if page_obj.number == num %}
-						<a class='page-current-link' href="?page={{ num }}">{{ num }}</a>
+						{% if 'audience_filter' in request.get_full_path or 'search_post' in request.get_full_path %}
+							<a class='page-current-link' href="{{ request.get_full_path }}&page={{ num }}">{{ num }}</a>
+						{% else %}
+							<a class='page-current-link' href="?page={{ num }}">{{ num }}</a>
+						{% endif %}
 					{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-						<a class='page-around-link' href="?page={{ num }}">{{ num }}</a>
+						{% if 'audience_filter' in request.get_full_path or 'search_post' in request.get_full_path %}
+							<a class='page-around-link' href="{{ request.get_full_path }}&page={{ num }}">{{ num }}</a>
+						{% else %}
+							<a class='page-around-link' href="?page={{ num }}">{{ num }}</a>
+						{% endif %}
+						
 					{% endif %}
 				{% endfor %}
 
 				{% if page_obj.has_next %}
-					<a class='page-next-link' href="?page={{ page_obj.next_page_number }}">
-						<i id="ff" class="fas fa-forward"></i></a>
-					<a class='page-last-link' href="?page={{ page_obj.paginator.num_pages }}"><i id="ff" class="fas fa-fast-forward"></i></a>
+					{% if 'audience_filter' in request.get_full_path or 'search_post' in request.get_full_path %}
+						<a class='page-next-link' href="{{ request.get_full_path }}&page={{ page_obj.next_page_number }}">
+							<i id="ff" class="fas fa-forward"></i></a>
+						<a class='page-last-link' href="{{ request.get_full_path }}&page={{ page_obj.paginator.num_pages }}"><i id="ff" class="fas fa-fast-forward"></i></a>
+					{% else %}
+						<a class='page-next-link' href="?page={{ page_obj.next_page_number }}"><i id="ff" class="fas fa-forward"></i></a>
+						<a class='page-last-link' href="?page={{ page_obj.paginator.num_pages }}"><i id="ff" class="fas fa-fast-forward"></i></a>
+					{% endif %}
 				{% endif %}
 
 			{% endif %}
@@ -134,7 +153,6 @@
 
 			const post_id = $(this).attr('id');
 			
-			// grabbing the like button text (to toggle value)
 			const likeChild = $(`.like-btn${post_id}`).children().attr('id');
 
 			const url = $(this).attr('action');
@@ -142,6 +160,7 @@
 			let res;
 			const likes = $(`.like-count${post_id}`).text();
 			const trimCount = parseInt(likes);
+			console.log(likes)
 
 			$.ajax({
 				type: 'POST',

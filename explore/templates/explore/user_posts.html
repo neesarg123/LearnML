@@ -19,20 +19,26 @@
 				
 			</div>
 		</div>
+		{% if user.is_authenticated %}
 		<div class="readability-card">
-			<div class="readability-card-container">
-				<input type="radio" onclick="if(this.checked){console.log(10)}" name="rating" id="rate10{{ forloop.counter0 }}"><label for="rate10{{ forloop.counter0 }}">10</label>
-				<input type="radio" onclick="if(this.checked){console.log(9)}" name="rating" id="rate9{{ forloop.counter0 }}"><label for="rate9{{ forloop.counter0 }}">9</label>
-				<input type="radio" onclick="if(this.checked){console.log(8)}" name="rating" id="rate8{{ forloop.counter0 }}"><label for="rate8{{ forloop.counter0 }}">8</label>
-				<input type="radio" onclick="if(this.checked){console.log(7)}" name="rating" id="rate7{{ forloop.counter0 }}"><label for="rate7{{ forloop.counter0 }}">7</label>
-				<input type="radio" onclick="if(this.checked){console.log(6)}" name="rating" id="rate6{{ forloop.counter0 }}"><label for="rate6{{ forloop.counter0 }}">6</label>
-				<input type="radio" onclick="if(this.checked){console.log(5)}" name="rating" id="rate5{{ forloop.counter0 }}"><label for="rate5{{ forloop.counter0 }}">5</label>
-				<input type="radio" onclick="if(this.checked){console.log(4)}" name="rating" id="rate4{{ forloop.counter0 }}"><label for="rate4{{ forloop.counter0 }}">4</label>
-				<input type="radio" onclick="if(this.checked){console.log(3)}" name="rating" id="rate3{{ forloop.counter0 }}"><label for="rate3{{ forloop.counter0 }}">3</label>
-				<input type="radio" onclick="if(this.checked){console.log(2)}" name="rating" id="rate2{{ forloop.counter0 }}"><label for="rate2{{ forloop.counter0 }}">2</label>
-				<input type="radio" onclick="if(this.checked){console.log(1)}" name="rating" id="rate1{{ forloop.counter0 }}"><label for="rate1{{ forloop.counter0 }}">1</label>
+			<div class="like-card-container">
+				
+				<form action="{% url 'like-post' %}" method="POST" class="like-form" id="{{ post.id }}">
+					{% csrf_token %}
+					<input type="hidden" name="post_id" value="{{ post.id }}">
+					<button type="submit" class="like-btn{{ post.id }}">
+						{% if user not in post.likes.all %}
+							<i id="heart-ic" class="far fa-heart"></i>
+						{% else %}
+							<i id="empty-heart-ic" class="fas fa-heart"></i>
+						{% endif %}
+					</button>
+					<span><i id="heart-ic-sp" class="fas fa-heart"></i></span>
+					<span class="like-count{{ post.id }}">{{ post.likes.count }}</span>
+				</form>
 			</div>
 		</div>
+		{% endif %}
 		{% endfor %}
 
 		<div class="pagination-container">
@@ -61,5 +67,51 @@
 			{% endif %}
 		</div>
 </section>
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+
+		$('.like-form').submit(function(e){
+			e.preventDefault(); // prevent from refreshing page
+
+			const post_id = $(this).attr('id');
+			
+			const likeChild = $(`.like-btn${post_id}`).children().attr('id');
+
+			const url = $(this).attr('action');
+
+			let res;
+			const likes = $(`.like-count${post_id}`).text();
+			const trimCount = parseInt(likes);
+			console.log(likes)
+
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: {
+					'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+					'post_id': post_id,
+				},
+				success: function(response) {
+					if (likeChild === 'empty-heart-ic') {
+						$(`.like-btn${post_id}`).children().removeClass("fas fa-heart").addClass("far fa-heart");
+						$(`.like-btn${post_id}`).children().attr("id", "heart-ic");
+						
+						res = trimCount - 1
+					} else {
+						$(`.like-btn${post_id}`).children().removeClass("far fa-heart").addClass("fas fa-heart");
+						$(`.like-btn${post_id}`).children().attr("id", "empty-heart-ic");
+						res = trimCount + 1
+					}
+					$(`.like-count${post_id}`).text(res);
+				},
+				error: function(response) {
+					console.log('error', response);
+				}
+			})
+		});
+	});
+
+</script>
 
 {% endblock section %}

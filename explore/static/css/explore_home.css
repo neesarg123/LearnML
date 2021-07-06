@@ -108,6 +108,11 @@ header {
 	margin-top: 40px;
 }
 
+.post-card {
+	border: 3px solid midnightblue;
+	border-bottom: none;
+}
+
 .post-card-detail {
 	margin-top: 80px;
 }
@@ -115,6 +120,7 @@ header {
 .post-content-container {
 	display: block;
 	padding: 9px 25px;
+	padding-bottom: 25px;
 }
 
 .posts-content-d {
@@ -126,7 +132,6 @@ header {
 	margin-left: 2.5%;
 	margin-right: 2.5%;
 	margin-top: 70px;
-	margin-bottom: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);;
 }
 
@@ -153,7 +158,7 @@ header {
 	width: 100%;
 }
 
-.readability-card {
+.readability-card, .readability-card-detail {
 	display: flex;
 	position: relative;
 	justify-content: center;
@@ -167,26 +172,63 @@ header {
 	margin-left: 30%;
 	margin-bottom: 10px;
 	transition: all 0.3s ease 0s;
-	border-bottom: 3px solid #4287f5;
+	border-top: 2px solid #c71b04;
+	border-left: 3px solid midnightblue;
+	border-right: 3px solid midnightblue;
+	border-bottom: 3px solid midnightblue;
+}
+
+.readability-card-detail {
+	width: 20%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 0%;
+	align-items: center;
+	box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+	border-top: none;
+	background-color: #FFDC00;
 }
 
 .readability-card:hover {
-	border-top: 3px solid #4287f5;
+	border-top: 3px solid #c71b04;
 	box-shadow: 1px 0px 5px 1px rgba(0,0,0,0.2);
+}
+
+
+.like-form {
+	background-color: transparent	;
+}
+
+#heart-ic:hover {
+	transform: scale(1.3);
+}
+
+#empty-heart-ic:hover {
+	transform: scale(0.8);
+}
+
+.readability-card-detail:hover #heart-ic {
+	transform: scale(1.3);
+}
+
+.readability-card-detail:hover #empty-heart-ic {
+	transform: scale(0.8);
 }
 
 .like-card-container {
 	margin: 10px;
 	display: flex;
+	background-color: transparent;
 }
 
-.like-form button {
+.like-form button, span {
 	border: none;
+	background-color: transparent;
 }
 
 #heart-ic-sp, #heart-ic, #empty-heart-ic {
 	border: none;
-	background-color: white;
+	background-color: transparent;
 }
 
 #heart-ic, #empty-heart-ic {
@@ -411,10 +453,10 @@ header {
 
 }
 
-.post-card-detail-d {
-	border-right: 3px solid lightblue;
-	border-left: 3px solid lightblue;
-	border-bottom: 3px solid lightblue;
+.post-card-detail-d, .readability-card-detail{
+	border-right: 3px solid midnightblue;
+	border-left: 3px solid midnightblue;
+	border-bottom: 3px solid midnightblue;
 }
 
 .edit-delete-container {

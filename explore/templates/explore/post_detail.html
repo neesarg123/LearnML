@@ -32,12 +32,84 @@
 				
 			</div>
 		</div>
+	</div>
+	{% if user.is_authenticated %}
+		<div class="readability-card-detail">
+			<div class="like-card-container">
+				
+				<form action="{% url 'like-post' %}" method="POST" class="like-form" id="{{ object.id }}">
+					{% csrf_token %}
+					<input type="hidden" name="post_id" value="{{ object.id }}">
+					<button type="submit" class="like-btn{{ object.id }}">
+						{% if user not in object.likes.all %}
+							<i id="heart-ic" class="far fa-heart"></i>
+						{% else %}
+							<i id="empty-heart-ic" class="fas fa-heart"></i>
+						{% endif %}
+					</button>
+					<span><i id="heart-ic-sp" class="fas fa-heart"></i></span>
+					<span class="like-count{{ object.id }}">{{ object.likes.count }}</span>
+				</form>
+			</div>
+		</div>
+	{% endif %}
 </section>
 <script type="text/javascript">
 	window.onscroll = function () {
 		var elem = document.getElementById("post-card-container-d");
-		document.getElementById('scroll_height').value = '{{ object.title }} | {{ object.author }} | ' + Math.ceil((Math.ceil((scrollY + window.innerHeight - 100) / (elem.clientHeight) * 100)) / 5) * 5 + '%'
+		let perc; 
+		perc = Math.ceil((Math.ceil((scrollY + window.innerHeight - 100) / (elem.clientHeight) * 100)) / 5) * 5
+
+		if (perc > 100) {
+			perc = 100;
+		}
+
+		document.getElementById('scroll_height').value = '{{ object.title }} | {{ object.author }} | ' + perc.toString() + '%'
 	};
+
+
+	$( document ).ready(function() {
+
+		$('.like-form').submit(function(e){
+			e.preventDefault(); // prevent from refreshing page
+
+			const post_id = $(this).attr('id');
+			
+			const likeChild = $(`.like-btn${post_id}`).children().attr('id');
+
+			const url = $(this).attr('action');
+
+			let res;
+			const likes = $(`.like-count${post_id}`).text();
+			const trimCount = parseInt(likes);
+			console.log(likes)
+
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: {
+					'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+					'post_id': post_id,
+				},
+				success: function(response) {
+					if (likeChild === 'empty-heart-ic') {
+						$(`.like-btn${post_id}`).children().removeClass("fas fa-heart").addClass("far fa-heart");
+						$(`.like-btn${post_id}`).children().attr("id", "heart-ic");
+						
+						res = trimCount - 1
+					} else {
+						$(`.like-btn${post_id}`).children().removeClass("far fa-heart").addClass("fas fa-heart");
+						$(`.like-btn${post_id}`).children().attr("id", "empty-heart-ic");
+						res = trimCount + 1
+					}
+					$(`.like-count${post_id}`).text(res);
+				},
+				error: function(response) {
+					console.log('error', response);
+				}
+			})
+		});
+	});
 
 </script>
 {% endblock section %}

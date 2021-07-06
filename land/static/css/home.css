@@ -450,7 +450,7 @@ input.question:focus {
 	display: none;
 }
 
-.form-group-login, .form-container-confirm, .form-group-profile, .form-group-create, #div_id_password1, #div_id_password2, #div_id_username, #div_id_password, .form-group-down, .forgot-option-link, .other-auth-container, .auth-desc, #google-icon {
+.form-group-login, .form-container-confirm, .form-group-profile, .form-group-create, #div_id_password1, #div_id_password2, #div_id_username, #div_id_linkedin_link, #div_id_twitter_link, #div_id_insta_link, #div_id_fb_link, #div_id_password, .form-group-down, .forgot-option-link, .other-auth-container, .auth-desc, #google-icon {
 	background-color: #F0A7A0;
 }
 
@@ -502,7 +502,7 @@ input.question:focus {
 	background-color: #F0A7A0;
 }
 
-#div_id_username, #div_id_email, #div_id_password1, #div_id_password2, #div_id_image {
+#div_id_username, #div_id_fb_link, #div_id_insta_link, #div_id_twitter_link, #div_id_linkedin_link, #div_id_email, #div_id_password1, #div_id_password2, #div_id_image {
 	padding-bottom: 10px;
 }
 
@@ -829,13 +829,21 @@ input, select {
 	display: none;
 }
 
-#div_id_username div, #div_id_password1 div, #div_id_password2 div, #div_id_new_password2 div {
+#div_id_username div, #div_id_fb_link div, #div_id_insta_link div, #div_id_twitter_link div, #div_id_linkedin_link div, #div_id_password1 div, #div_id_password2 div, #div_id_new_password2 div {
 	display: block;
 	background-color: #F0A7A0;
 }
 
 #div_id_username label {
 	display: none;
+}
+
+#div_id_fb_link label, #div_id_insta_link label, #div_id_linkedin_link label, #div_id_twitter_link label {
+	background-color: transparent;
+}
+
+#div_id_fb_link i, #div_id_insta_link i, #div_id_linkedin_link i, #div_id_twitter_link i {
+	background-color: transparent;
 }
 
 #div_id_password label {
@@ -1055,4 +1063,21 @@ p.account-email-text {
 
 .form-group-confirm:hover {
 	box-shadow: none;
+}
+
+
+.socials-images {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.socials-images i {
+	cursor: pointer;
+	transition: all 0.4s ease 0s;
+}
+
+.socials-images i:hover {
+	transform: scale(1.5);
 }

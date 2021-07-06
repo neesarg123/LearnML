@@ -6,6 +6,11 @@ from PIL import Image
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+	fb_link = models.URLField(blank=True, max_length=100, default='#')
+	linkedin_link = models.URLField(blank=True, max_length=100, default='#')
+	twitter_link = models.URLField(blank=True, max_length=100, default='#')
+	insta_link = models.URLField(blank=True, max_length=100, default='#')
+
 
 	def __str__(self):
 		return f'{self.user.username} Profile'

@@ -8,6 +8,20 @@
 				<img class="round-account-img" src="{{ user.profile.image.url }}" alt="image">
 				<h2 class='account-heading'>{{ user.username }}</h2>
 				<p class="account-email-text">{{ user.email }}</p>
+				<div class="socials-images">
+					<a href="{{ user.profile.fb_link }}" target="_blank">
+						<i id="fb-logo" class="fab fa-facebook-f"></i>
+					</a>
+					<a href="{{ user.profile.linkedin_link }}" target="_blank">
+						<i id="in-logo" class="fab fa-linkedin-in"></i>
+					</a>
+					<a href="{{ user.profile.twitter_link }}" target="_blank">
+						<i id="tw-logo" class="fab fa-twitter"></i>
+					</a>
+					<a href="{{ user.profile.insta_link }}" target="_blank">
+						<i id="ta-logo" class="fab fa-instagram"></i>
+					</a>					
+				</div>
 			</div>
 		</div>
 		<!-- FORM -->
@@ -26,4 +40,17 @@
 		</form>
 
 	</div>
+
+<script type="text/javascript">
+	
+	$( document ).ready(function() {
+		$("label[for='id_fb_link']").text('').append('<i class="fab fa-facebook-square"></i>')
+		$("label[for='id_linkedin_link']").text('').append('<i class="fab fa-linkedin"></i>')
+		$("label[for='id_twitter_link']").text('').append('<i class="fab fa-twitter-square"></i>')
+		$("label[for='id_insta_link']").text('').append('<i class="fab fa-instagram-square"></i>')
+	
+	});
+
+</script>
+
 {% endblock section %}
