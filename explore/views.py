@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Like
+from .models import Post, Like, Helpful
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -32,6 +32,38 @@ def like_post(request):
 		data = {
 			'value': like.value,
 			'num_likes': post_obj.likes.all().count()
+		}
+
+		return JsonResponse(data, safe=False)
+
+	return redirect('explore-home')
+
+
+def helpful_post(request):
+	user = request.user
+	if request.method == 'POST':
+		post_id = request.POST.get('post_id')
+		post_obj = Post.objects.get(id=post_id)
+
+		if user in post_obj.helpfuls.all():
+			post_obj.helpfuls.remove(user)
+		else:
+			post_obj.helpfuls.add(user)
+
+		helpful, created = Helpful.objects.get_or_create(user=user, post_id=post_id)
+
+		if not created:
+			if helpful.value == 'Helpful':
+				helpful.value = 'Unhelpful'
+			else:
+				helpful.value = 'Helpful'
+		
+		post_obj.save()		
+		helpful.save()
+
+		data = {
+			'value': helpful.value,
+			'num_helpful': post_obj.helpfuls.all().count()
 		}
 
 		return JsonResponse(data, safe=False)

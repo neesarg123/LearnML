@@ -179,6 +179,7 @@ header {
 }
 
 .readability-card-detail {
+	display: inline-flex;
 	width: 20%;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
@@ -195,15 +196,15 @@ header {
 }
 
 
-.like-form {
+.like-form, .helpful-form {
 	background-color: transparent	;
 }
 
-#heart-ic:hover {
+#heart-ic:hover, #unhelp-ic:hover {
 	transform: scale(1.3);
 }
 
-#empty-heart-ic:hover {
+#empty-heart-ic:hover, #unhelp-ic:hover {
 	transform: scale(0.8);
 }
 
@@ -211,14 +212,29 @@ header {
 	transform: scale(1.3);
 }
 
+.readability-card-detail:hover #help-ic {
+	transform: scale(1.3);
+}
+
 .readability-card-detail:hover #empty-heart-ic {
 	transform: scale(0.8);
 }
 
-.like-card-container {
+.readability-card-detail:hover #unhelp-ic {
+	transform: scale(0.8);
+}
+
+.like-card-container, .like-card-container-detail {
 	margin: 10px;
 	display: flex;
 	background-color: transparent;
+	width: 100%;
+	justify-content: center;
+	transition: all 0.4s ease 0s;
+}
+
+.like-card-container-detail {
+	justify-content: space-between;
 }
 
 .like-form button, span {
@@ -226,21 +242,27 @@ header {
 	background-color: transparent;
 }
 
-#heart-ic-sp, #heart-ic, #empty-heart-ic {
+.helpful-form button, span {
+	border: none;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+#heart-ic-sp, #heart-ic, #empty-heart-ic, #help-ic, #unhelp-ic {
 	border: none;
 	background-color: transparent;
 }
 
-#heart-ic, #empty-heart-ic {
+#heart-ic, #empty-heart-ic, #help-ic, #unhelp-ic {
 	cursor: pointer;
 	transition: all 0.4s ease 0s;
 }
 
-#empty-heart-ic {
+#empty-heart-ic, #unhelp-ic {
 	color: #c71b04;
 }
 
-#heart-ic:hover {
+#heart-ic:hover, #help-ic:hover {
 	color: #c71b04;
 }
 
@@ -547,4 +569,24 @@ header {
 	color: #B4B4FF;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.post-author-and-date i {
+	padding-left: 9px;
+}
+
+#fb-logo {
+	color: #1877F2;
+}
+
+#in-logo {
+	color: #2867B2;
+}
+
+#tw-logo {
+	color: #5DA9DD;
+}
+
+#ta-logo {
+	color: #AC438D;
 }

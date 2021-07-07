@@ -9,7 +9,22 @@
 			<div class="post-card-container">
 				<div class="pic-name-date">
 					<img class="small-prof-pic" src="{{ post.author.profile.image.url }}">
-					<p class="post-author-and-date"><a class="post-author-and-date" href="{% url 'user-posts' post.author.username %}">{{ post.author }}, {{ post.date_posted|date:"N d, Y" }}</a></p>
+					<p class="post-author-and-date">
+						<a class="post-author-and-date" href="{% url 'user-posts' post.author.username %}">{{ post.author }}, {{ post.date_posted|date:"N d, Y" }}</a>
+						<a href="{{ post.author.profile.fb_link }}" target="_blank">
+							<i id="fb-logo" class="fab fa-facebook-f"></i>
+						</a>
+						<a href="{{ post.author.profile.linkedin_link }}" target="_blank">
+							<i id="in-logo" class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="{{ post.author.profile.twitter_link }}" target="_blank">
+							<i id="tw-logo" class="fab fa-twitter"></i>
+						</a>
+						<a href="{{ post.author.profile.insta_link }}" target="_blank">
+							<i id="ta-logo" class="fab fa-instagram"></i>
+						</a>
+					</p>
+					
 				</div>
 				<h2><a class="post-title-link" href="{% url 'post-detail' post.id post.title %}">{{ post.title }}</a></h2>
 				<p class="post-audience">{{ post.audience }}</p>
@@ -36,6 +51,7 @@
 					<span><i id="heart-ic-sp" class="fas fa-heart"></i></span>
 					<span class="like-count{{ post.id }}">{{ post.likes.count }}</span>
 				</form>
+
 			</div>
 		</div>
 		{% endif %}

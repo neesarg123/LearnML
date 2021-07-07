@@ -20,11 +20,16 @@ class Post(models.Model):
 
 	audience = models.CharField(max_length=3, choices=POST_AUDIENCE, default='BEG',)
 	likes = models.ManyToManyField(User, default=None, blank=True, related_name='likes')
+	helpfuls = models.ManyToManyField(User, default=None, blank=True, related_name='helpfuls')
 
 
 	@property
 	def num_likes(self):
 		return self.likes.all().count()
+
+	@property
+	def num_helpfuls(self):
+		return self.helpfuls.all().count()
 
 	def __str__(self):
 		return self.title 
@@ -43,6 +48,21 @@ class Like(models.Model):
 	]
 
 	value = models.CharField(choices=LIKE_CHOICES, default='Like', max_length=10)
+
+	def __str__(self):
+		return str(self.post)
+
+
+class Helpful(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+	HELPFUL_CHOICES = [
+		('Helpful', 'Helpful'),
+		('Unhelpful', 'Unhelpful'),
+	]
+
+	value = models.CharField(choices=HELPFUL_CHOICES, max_length=10)
 
 	def __str__(self):
 		return str(self.post)

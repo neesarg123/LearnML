@@ -11,7 +11,24 @@
 			<div class="post-card-container-d", id="post-card-container-d">
 				<div class="pic-name-date">
 					<img class="small-prof-pic" src="{{ object.author.profile.image.url }}">
-					<p class="post-author-and-date"><a class="post-author-and-date" href="{% url 'user-posts' post.author.username %}">{{ object.author }}, {{ object.date_posted|date:"N d, Y" }}</a></p>
+					<p class="post-author-and-date">
+						<a class="post-author-and-date" href="{% url 'user-posts' post.author.username %}">{{ object.author }}, {{ object.date_posted|date:"N d, Y" }}</a>
+
+						{% if user != object.author %}
+						<a href="{{ object.author.profile.fb_link }}" target="_blank">
+							<i id="fb-logo" class="fab fa-facebook-f"></i>
+						</a>
+						<a href="{{ object.author.profile.linkedin_link }}" target="_blank">
+							<i id="in-logo" class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="{{ object.author.profile.twitter_link }}" target="_blank">
+							<i id="tw-logo" class="fab fa-twitter"></i>
+						</a>
+						<a href="{{ object.author.profile.insta_link }}" target="_blank">
+							<i id="ta-logo" class="fab fa-instagram"></i>
+						</a>
+						{% endif %}
+					</p>
 					
 					{% if user == object.author %}
 						<div class="edit-delete-container">
@@ -35,7 +52,7 @@
 	</div>
 	{% if user.is_authenticated %}
 		<div class="readability-card-detail">
-			<div class="like-card-container">
+			<div class="like-card-container-detail">
 				
 				<form action="{% url 'like-post' %}" method="POST" class="like-form" id="{{ object.id }}">
 					{% csrf_token %}
@@ -50,8 +67,22 @@
 					<span><i id="heart-ic-sp" class="fas fa-heart"></i></span>
 					<span class="like-count{{ object.id }}">{{ object.likes.count }}</span>
 				</form>
+				<form action="{% url 'helpful-post' %}" method="POST" class="helpful-form" id="{{ object.id }}">
+					{% csrf_token %}
+					<input type="hidden" name="post_id" value="{{ object.id }}">
+					<button type="submit" class="helpful-btn{{ object.id }}">
+						{% if user not in object.helpfuls.all %}
+							<i id="help-ic" class="far fa-thumbs-up"></i>
+						{% else %}
+							<i id="unhelp-ic" class="fas fa-thumbs-up"></i>
+						{% endif %}
+					</button>
+					<span>Helpful | </span>
+					<span class="helpful-count{{ object.id }}">{{ object.helpfuls.count }}</span>
+				</form>
 			</div>
 		</div>
+
 	{% endif %}
 </section>
 <script type="text/javascript">
@@ -103,6 +134,46 @@
 						res = trimCount + 1
 					}
 					$(`.like-count${post_id}`).text(res);
+				},
+				error: function(response) {
+					console.log('error', response);
+				}
+			})
+		});
+
+
+		$('.helpful-form').submit(function(e){
+			e.preventDefault(); // prevent from refreshing page
+
+			const post_id = $(this).attr('id');
+			
+			const helpfulChild = $(`.helpful-btn${post_id}`).children().attr('id');
+
+			const url = $(this).attr('action');
+
+			let res;
+			const helpfuls = $(`.helpful-count${post_id}`).text();
+			const trimCount = parseInt(helpfuls);
+
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: {
+					'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+					'post_id': post_id,
+				},
+				success: function(response) {
+					if (helpfulChild === 'unhelp-ic') {
+						$(`.helpful-btn${post_id}`).children().removeClass("fas fa-thumbs-up").addClass("far fa-thumbs-up");
+						$(`.helpful-btn${post_id}`).children().attr("id", "help-ic");
+						
+						res = trimCount - 1
+					} else {
+						$(`.helpful-btn${post_id}`).children().removeClass("far fa-thumbs-up").addClass("fas fa-thumbs-up");
+						$(`.helpful-btn${post_id}`).children().attr("id", "unhelp-ic");
+						res = trimCount + 1
+					}
+					$(`.helpful-count${post_id}`).text(res);
 				},
 				error: function(response) {
 					console.log('error', response);
