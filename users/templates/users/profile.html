@@ -1,4 +1,5 @@
 {% extends "land/base.html" %}
+{% load humanize %}
 {% load crispy_forms_tags %}
 
 {% block section %}
@@ -31,7 +32,21 @@
 			<i id="right-arrow-rocket" class="fas fa-angle-double-right"></i>
 		</div>
 		<div class="yp-posts-container">
-			<p>{{ posts }}</p>
+			{% for post in posts %}
+			<div class="post-card-container">
+				<h2><a class="post-title-link" href="{% url 'post-detail' post.id post.title %}">{{ post.title }}</a></h2>	
+				<div class="stats" >
+					<i id="empty-heart-ic" class="fas fa-heart"></i>
+					<span class="like-count{{ post.id }}">{{ post.likes.count|intcomma }}</span>
+					<i id="unhelp-ic" class="fas fa-thumbs-up"></i>
+					<span class="helpful-count{{ post.id }}">{{ post.helpfuls.count|intcomma }}</span>
+					<i id="bla-ic" class="fas fa-lightbulb"></i>
+					<span class="visual-count{{ post.id }}">{{ post.visual_likes.count|intcomma }}</span>
+					<i id="wor-ic" class="fas fa-keyboard"></i>
+					<span class="concise-count{{ post.id }}">{{ post.concise_likes.count|intcomma }}</span>
+				</div>
+			</div>
+			{% endfor %}
 		</div>
 		<!-- FORM -->
 		<form method="POST" enctype="multipart/form-data" class="profile-form">

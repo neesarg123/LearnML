@@ -24,6 +24,7 @@ def register(request):
 
 @login_required
 def profile(request):
+	posts = Post.objects.filter(author=request.user).order_by('-date_posted')
 	if request.method == 'POST':
 		u_form = UserUpdateForm(request.POST, instance=request.user)  # populate the form with user info
 		p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -41,17 +42,7 @@ def profile(request):
 	context = {
 		'u_form': u_form,
 		'p_form': p_form,
+		'posts': posts,
 	}
 
 	return render(request, 'users/profile.html', context)
-
-
-class UserPostListView(ListView):
-	model = Post
-	template_name = 'users/profile.html'
-	context_object_name = 'posts'
-	paginate_by = 5
-
-	def get_queryset(self):
-		user_ = get_object_or_404(User, username=self.request.user)	
-		return Post.objects.filter(author=user_).order_by('-date_posted')
