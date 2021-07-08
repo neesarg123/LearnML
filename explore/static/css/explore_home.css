@@ -131,7 +131,7 @@ header {
 	align-items: center;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
-	margin-top: 70px;
+	margin-top: 90px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);;
 }
 
@@ -180,7 +180,7 @@ header {
 
 .readability-card-detail {
 	display: inline-flex;
-	width: 20%;
+	width: 40%;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
 	margin-top: 0%;
@@ -196,7 +196,7 @@ header {
 }
 
 
-.like-form, .helpful-form {
+.like-form, .helpful-form, .visual-form, .concise-form {
 	background-color: transparent	;
 }
 
@@ -216,7 +216,23 @@ header {
 	transform: scale(1.3);
 }
 
+.readability-card-detail:hover #vis-ic {
+	transform: scale(1.3);
+}
+
+.readability-card-detail:hover #con-ic {
+	transform: scale(1.3);
+}
+
 .readability-card-detail:hover #empty-heart-ic {
+	transform: scale(0.8);
+}
+
+.readability-card-detail:hover #bla-ic {
+	transform: scale(0.8);
+}
+
+.readability-card-detail:hover #wor-ic {
 	transform: scale(0.8);
 }
 
@@ -237,6 +253,39 @@ header {
 	justify-content: space-between;
 }
 
+.like-card-container {
+	width: 55.5%;
+	justify-content: flex-end;
+}
+
+.attr-text-container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 44.5%;
+}
+
+.attr-text-container p {
+	display: flex;
+	align-content: center;
+	margin-right: 10px;
+	border-radius: 5%;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+.h-text {
+	background-image: linear-gradient(to right bottom, #58daf8, #15e4e8, #2eebc6, #6fed99, #aceb67, #b8ea5f, #c5e957, #d1e850, #b1ed6d, #93f08a, #77f1a6, #61f0c0);
+}
+
+.v-text {
+	background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.c-text {
+	background-image: linear-gradient(to right top, #70acfa, #3ac3ff, #22d6f6, #55e6e5, #8cf3d1, #9ef7cf, #b0fbce, #c0ffce, #b4ffd9, #aaffe4, #a2ffef, #9cfff9);
+}
+
 .like-form button, span {
 	border: none;
 	background-color: transparent;
@@ -248,21 +297,33 @@ header {
 	font-weight: bold;
 }
 
-#heart-ic-sp, #heart-ic, #empty-heart-ic, #help-ic, #unhelp-ic {
+.visual-form button, span {
+	border: none;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+.concise-form button, span {
+	border: none;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+#heart-ic-sp, #heart-ic, #empty-heart-ic, #help-ic, #vis-ic, #con-ic, #unhelp-ic, #bla-ic, #wor-ic {
 	border: none;
 	background-color: transparent;
 }
 
-#heart-ic, #empty-heart-ic, #help-ic, #unhelp-ic {
+#heart-ic, #empty-heart-ic, #help-ic, #vis-ic, #con-ic, #unhelp-ic, #bla-ic, #wor-ic {
 	cursor: pointer;
 	transition: all 0.4s ease 0s;
 }
 
-#empty-heart-ic, #unhelp-ic {
+#empty-heart-ic, #unhelp-ic, #bla-ic, #wor-ic {
 	color: #c71b04;
 }
 
-#heart-ic:hover, #help-ic:hover {
+#heart-ic:hover, #help-ic:hover, #vis-ic:hover, #con-ic:hover {
 	color: #c71b04;
 }
 
@@ -479,6 +540,11 @@ header {
 	border-right: 3px solid midnightblue;
 	border-left: 3px solid midnightblue;
 	border-bottom: 3px solid midnightblue;
+}
+
+
+.post-card-detail-d {
+	border-top: 3px solid midnightblue;
 }
 
 .edit-delete-container {

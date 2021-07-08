@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Like, Helpful
+from .models import Post, Like, Helpful, Visual, Concise
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -69,6 +69,71 @@ def helpful_post(request):
 		return JsonResponse(data, safe=False)
 
 	return redirect('explore-home')
+
+
+def visual_post(request):
+	user = request.user
+	if request.method == 'POST':
+		post_id = request.POST.get('post_id')
+		post_obj = Post.objects.get(id=post_id)
+
+		if user in post_obj.visual_likes.all():
+			post_obj.visual_likes.remove(user)
+		else:
+			post_obj.visual_likes.add(user)
+
+		visual, created = Visual.objects.get_or_create(user=user, post_id=post_id)
+
+		if not created:
+			if visual.value == 'Visual':
+				visual.value = 'Bland'
+			else:
+				visual.value = 'Visual'
+		
+		post_obj.save()		
+		visual.save()
+
+		data = {
+			'value': visual.value,
+			'num_visual': post_obj.visual_likes.all().count()
+		}
+
+		return JsonResponse(data, safe=False)
+
+	return redirect('explore-home')
+
+
+def concise_post(request):
+	user = request.user
+	if request.method == 'POST':
+		post_id = request.POST.get('post_id')
+		post_obj = Post.objects.get(id=post_id)
+
+		if user in post_obj.concise_likes.all():
+			post_obj.concise_likes.remove(user)
+		else:
+			post_obj.concise_likes.add(user)
+
+		concise, created = Concise.objects.get_or_create(user=user, post_id=post_id)
+
+		if not created:
+			if concise.value == 'Concise':
+				concise.value = 'Wordy'
+			else:
+				concise.value = 'Concise'
+		
+		post_obj.save()		
+		concise.save()
+
+		data = {
+			'value': concise.value,
+			'num_visual': post_obj.concise_likes.all().count()
+		}
+
+		return JsonResponse(data, safe=False)
+
+	return redirect('explore-home')
+
 
 
 class PostListView(ListView):

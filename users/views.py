@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from explore.models import Post 
+from django.contrib.auth.models import User
+from django.views.generic import ListView
 
 
 def register(request):
@@ -41,3 +44,14 @@ def profile(request):
 	}
 
 	return render(request, 'users/profile.html', context)
+
+
+class UserPostListView(ListView):
+	model = Post
+	template_name = 'users/profile.html'
+	context_object_name = 'posts'
+	paginate_by = 5
+
+	def get_queryset(self):
+		user_ = get_object_or_404(User, username=self.request.user)	
+		return Post.objects.filter(author=user_).order_by('-date_posted')

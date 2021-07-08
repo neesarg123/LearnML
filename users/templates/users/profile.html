@@ -24,6 +24,15 @@
 				</div>
 			</div>
 		</div>
+		<!-- USER POSTS -->
+		<div class="yp-container">
+			<i id="left-arrow-rocket" class="fas fa-angle-double-right"></i>
+			<h2 id="yp-h2">Your Posts</h2>
+			<i id="right-arrow-rocket" class="fas fa-angle-double-right"></i>
+		</div>
+		<div class="yp-posts-container">
+			<p>{{ posts }}</p>
+		</div>
 		<!-- FORM -->
 		<form method="POST" enctype="multipart/form-data" class="profile-form">
 			{% csrf_token %}

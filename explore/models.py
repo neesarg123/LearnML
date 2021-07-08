@@ -20,8 +20,12 @@ class Post(models.Model):
 
 	audience = models.CharField(max_length=3, choices=POST_AUDIENCE, default='BEG',)
 	likes = models.ManyToManyField(User, default=None, blank=True, related_name='likes')
+	
+	# other interactions:
+	# helpful, visual, concise
 	helpfuls = models.ManyToManyField(User, default=None, blank=True, related_name='helpfuls')
-
+	visual_likes = models.ManyToManyField(User, default=None, blank=True, related_name='visual_likes')
+	concise_likes = models.ManyToManyField(User, default=None, blank=True, related_name='concise_likes')
 
 	@property
 	def num_likes(self):
@@ -30,6 +34,14 @@ class Post(models.Model):
 	@property
 	def num_helpfuls(self):
 		return self.helpfuls.all().count()
+
+	@property
+	def num_visual_likes(self):
+		return self.visual_likes.all().count()
+
+	@property
+	def num_concise_likes(self):
+		return self.concise_likes.all().count()
 
 	def __str__(self):
 		return self.title 
@@ -63,6 +75,36 @@ class Helpful(models.Model):
 	]
 
 	value = models.CharField(choices=HELPFUL_CHOICES, max_length=10)
+
+	def __str__(self):
+		return str(self.post)
+
+
+class Visual(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+	VISUAL_CHOICES = [
+		('Visual', 'Visual'),
+		('Bland', 'Bland'),
+	]
+
+	value = models.CharField(choices=VISUAL_CHOICES, max_length=10)
+
+	def __str__(self):
+		return str(self.post)
+
+
+class Concise(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+	CONCISE_CHOICES = [
+		('Concise', 'Concise'),
+		('Wordy', 'Wordy'),
+	]
+
+	value = models.CharField(choices=CONCISE_CHOICES, max_length=10)
 
 	def __str__(self):
 		return str(self.post)

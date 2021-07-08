@@ -1,5 +1,5 @@
 {% extends "explore/base.html" %}
-
+{% load humanize %}
 {% block section %}
 <h2 class="more-user-posts-h2">Posts by <span id='user-name-h2'> {{ view.kwargs.username }} </span> ({{ page_obj.paginator.count }})</h2>
 <section class="posts-section">
@@ -49,8 +49,30 @@
 						{% endif %}
 					</button>
 					<span><i id="heart-ic-sp" class="fas fa-heart"></i></span>
-					<span class="like-count{{ post.id }}">{{ post.likes.count }}</span>
+					<span class="like-count{{ post.id }}">{{ post.likes.count|intcomma }}</span>
 				</form>
+			</div>
+			<div class="attr-text-container">
+				{% if post.helpfuls.count == post.visual_likes.count and post.helpfuls.count == post.concise_likes.count %}
+
+					<p class='h-text'> &nbsp; helpful &nbsp;</p> 
+
+				{% elif post.helpfuls.count > post.visual_likes.count and post.helpfuls.count > post.concise_likes.count %}
+
+					<p class='h-text'> &nbsp; helpful &nbsp; </p>
+
+				{% elif post.visual_likes.count > post.helpfuls.count and post.visual_likes.count > post.concise_likes.count %}
+
+					<p class='v-text'> &nbsp; visual &nbsp; </p>
+
+				{% elif post.concise_likes.count > post.visual_likes.count and post.concise_likes.count > post.helpfuls.count %}
+
+					<p class='c-text'> &nbsp; concise &nbsp; </p>
+
+				{% elif post.concise_likes.count == post.visual_likes.count %}
+
+					<p class='v-text'> &nbsp; visual &nbsp; </p>
+				{% endif %}
 
 			</div>
 		</div>

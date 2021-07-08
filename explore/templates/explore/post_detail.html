@@ -1,5 +1,5 @@
 {% extends "explore/base.html" %}
-
+{% load humanize %}
 {% block section %}
 
 <section class="posts-section-d">
@@ -65,8 +65,9 @@
 						{% endif %}
 					</button>
 					<span><i id="heart-ic-sp" class="fas fa-heart"></i></span>
-					<span class="like-count{{ object.id }}">{{ object.likes.count }}</span>
+					<span class="like-count{{ object.id }}">{{ object.likes.count|intcomma }}</span>
 				</form>
+				<!-- HELPFUL -->
 				<form action="{% url 'helpful-post' %}" method="POST" class="helpful-form" id="{{ object.id }}">
 					{% csrf_token %}
 					<input type="hidden" name="post_id" value="{{ object.id }}">
@@ -78,7 +79,35 @@
 						{% endif %}
 					</button>
 					<span>Helpful | </span>
-					<span class="helpful-count{{ object.id }}">{{ object.helpfuls.count }}</span>
+					<span class="helpful-count{{ object.id }}">{{ object.helpfuls.count|intcomma }}</span>
+				</form>
+				<!-- VISUAL -->
+				<form action="{% url 'visual-post' %}" method="POST" class="visual-form" id="{{ object.id }}">
+					{% csrf_token %}
+					<input type="hidden" name="post_id" value="{{ object.id }}">
+					<button type="submit" class="visual-btn{{ object.id }}">
+						{% if user not in object.visual_likes.all %}
+							<i id="vis-ic" class="far fa-lightbulb"></i>
+						{% else %}
+							<i id="bla-ic" class="fas fa-lightbulb"></i>
+						{% endif %}
+					</button>
+					<span>Visual | </span>
+					<span class="visual-count{{ object.id }}">{{ object.visual_likes.count|intcomma }}</span>
+				</form>
+				<!-- CONCISE -->
+				<form action="{% url 'concise-post' %}" method="POST" class="concise-form" id="{{ object.id }}">
+					{% csrf_token %}
+					<input type="hidden" name="post_id" value="{{ object.id }}">
+					<button type="submit" class="concise-btn{{ object.id }}">
+						{% if user not in object.concise_likes.all %}
+							<i id="con-ic" class="far fa-keyboard"></i>
+						{% else %}
+							<i id="wor-ic" class="fas fa-keyboard"></i>
+						{% endif %}
+					</button>
+					<span>Concise | </span>
+					<span class="concise-count{{ object.id }}">{{ object.concise_likes.count|intcomma }}</span>
 				</form>
 			</div>
 		</div>
@@ -174,6 +203,84 @@
 						res = trimCount + 1
 					}
 					$(`.helpful-count${post_id}`).text(res);
+				},
+				error: function(response) {
+					console.log('error', response);
+				}
+			})
+		});
+
+		$('.visual-form').submit(function(e){
+			e.preventDefault(); // prevent from refreshing page
+
+			const post_id = $(this).attr('id');
+			
+			const visualChild = $(`.visual-btn${post_id}`).children().attr('id');
+
+			const url = $(this).attr('action');
+
+			let res;
+			const visuals = $(`.visual-count${post_id}`).text();
+			const trimCount = parseInt(visuals);
+
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: {
+					'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+					'post_id': post_id,
+				},
+				success: function(response) {
+					if (visualChild === 'bla-ic') {
+						$(`.visual-btn${post_id}`).children().removeClass("fas fa-lightbulb").addClass("far fa-lightbulb");
+						$(`.visual-btn${post_id}`).children().attr("id", "vis-ic");
+						
+						res = trimCount - 1
+					} else {
+						$(`.visual-btn${post_id}`).children().removeClass("far fa-lightbulb").addClass("fas fa-lightbulb");
+						$(`.visual-btn${post_id}`).children().attr("id", "bla-ic");
+						res = trimCount + 1
+					}
+					$(`.visual-count${post_id}`).text(res);
+				},
+				error: function(response) {
+					console.log('error', response);
+				}
+			})
+		});
+
+		$('.concise-form').submit(function(e){
+			e.preventDefault(); // prevent from refreshing page
+
+			const post_id = $(this).attr('id');
+			
+			const conciseChild = $(`.concise-btn${post_id}`).children().attr('id');
+
+			const url = $(this).attr('action');
+
+			let res;
+			const concises = $(`.concise-count${post_id}`).text();
+			const trimCount = parseInt(concises);
+
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: {
+					'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+					'post_id': post_id,
+				},
+				success: function(response) {
+					if (conciseChild === 'wor-ic') {
+						$(`.concise-btn${post_id}`).children().removeClass("fas fa-keyboard").addClass("far fa-keyboard");
+						$(`.concise-btn${post_id}`).children().attr("id", "con-ic");
+						
+						res = trimCount - 1
+					} else {
+						$(`.concise-btn${post_id}`).children().removeClass("far fa-keyboard").addClass("fas fa-keyboard");
+						$(`.concise-btn${post_id}`).children().attr("id", "wor-ic");
+						res = trimCount + 1
+					}
+					$(`.concise-count${post_id}`).text(res);
 				},
 				error: function(response) {
 					console.log('error', response);
