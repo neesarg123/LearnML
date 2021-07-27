@@ -5,6 +5,8 @@ from PIL import Image
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	bio = models.CharField(blank=True, max_length=100, default='')
+	quote = models.CharField(blank=True, max_length=1000, default='')
 	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 	fb_link = models.URLField(blank=True, max_length=100, default='#')
 	linkedin_link = models.URLField(blank=True, max_length=100, default='#')

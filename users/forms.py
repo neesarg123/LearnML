@@ -25,8 +25,10 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['fb_link', 'linkedin_link', 'twitter_link', 'insta_link', 'image']
+		fields = ['bio', 'quote', 'fb_link', 'linkedin_link', 'twitter_link', 'insta_link', 'image']
 		labels = {
+			'bio': ('Bio'),
+			'quote': ('Motivation'),
             'fb_link': ('FB'),
             'linkedin_link': ('in'),
             'twitter_link': ('TW'),

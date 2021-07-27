@@ -1,41 +1,69 @@
 {% extends "explore/base.html" %}
 {% load humanize %}
 {% block section %}
-<h2 class="more-user-posts-h2">Posts by <span id='user-name-h2'> {{ view.kwargs.username }} </span> ({{ page_obj.paginator.count }})</h2>
-<section class="posts-section">
-	<div class="posts-content">
+<div class="user-posts-title-container">
+	<h2 class="more-user-posts-h2">
+		Posts by <span id='user-name-h2'> {{ view.kwargs.username }} </span> ({{ page_obj.paginator.count }})
+	</h2>
+</div>
+
+<div class="posts-bio-container">
+	<div class="user-bio-quote">
+		<h2 class="user-greeting-h2">{{ view.kwargs.username }}</h2>
+		<div class="user-bio-pic">
+			<img class="small-prof-pic" src="{{ user.profile.image.url }}">
+			<p>
+				{{ posts.0.author.profile.bio }}
+			</p>
+		</div>
+		<div class="user-quote">
+			<p class="quote-p">
+				<i class="fas fa-quote-left"></i>
+				{{ posts.0.author.profile.quote }}
+				<i class="fas fa-quote-right"></i>
+			</p>
+		</div>
+		<div class="user-socials">
+			<a href="{{ posts.0.author.profile.fb_link }}" target="_blank">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="{{ posts.0.author.profile.linkedin_link }}" target="_blank">
+				<i class="fab fa-linkedin-in"></i>
+			</a>
+			<a href="{{ posts.0.author.profile.twitter_link }}" target="_blank">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="{{ posts.0.author.profile.insta_link }}" target="_blank">
+				<i class="fab fa-instagram"></i>
+			</a>
+		</div>
+	</div>
+	<div class="posts-container">
 		{% for post in posts %}
-		<div class="post-card">
-			<div class="post-card-container">
-				<div class="pic-name-date">
-					<img class="small-prof-pic" src="{{ post.author.profile.image.url }}">
-					<p class="post-author-and-date">
-						<a class="post-author-and-date" href="{% url 'user-posts' post.author.username %}">{{ post.author }}, {{ post.date_posted|date:"N d, Y" }}</a>
-						<a href="{{ post.author.profile.fb_link }}" target="_blank">
-							<i id="fb-logo" class="fab fa-facebook-f"></i>
-						</a>
-						<a href="{{ post.author.profile.linkedin_link }}" target="_blank">
-							<i id="in-logo" class="fab fa-linkedin-in"></i>
-						</a>
-						<a href="{{ post.author.profile.twitter_link }}" target="_blank">
-							<i id="tw-logo" class="fab fa-twitter"></i>
-						</a>
-						<a href="{{ post.author.profile.insta_link }}" target="_blank">
-							<i id="ta-logo" class="fab fa-instagram"></i>
-						</a>
-					</p>
-					
-				</div>
-				<h2><a class="post-title-link" href="{% url 'post-detail' post.id post.title %}">{{ post.title }}</a></h2>
-				<p class="post-audience">{{ post.audience }}</p>
-				<div class=post-content-container>
-					<p class="post-content">{{ post.content|safe }}</p>
-				</div>
+		<div class="post-card-up">
+			<div class="pic-name-date-up">
+				<img class="small-prof-pic" src="{{ post.author.profile.image.url }}">
+				<p class="post-author-and-date-up">
+					<a class="post-author-and-date-up" href="{% url 'user-posts' post.author.username %}">{{ post.author }}, {{ post.date_posted|date:"N d, Y" }}</a>
+				</p>
 				
+			</div>
+			
+			<div class="post-title-up">
+				<h2><a class="post-title-link-up" href="{% url 'post-detail' post.id post.title %}">{{ post.title|truncatechars:39 }}</a></h2>
+			</div>
+			
+			<div class="post-audience-up-div">
+				<p class="post-audience-up">{{ post.audience }}</p>
+			</div>
+			
+			<div class=post-content-container-up>
+				<p class="post-content-up">{{ post.content|truncatewords_html:45|safe }}
+				</p>
 			</div>
 		</div>
 		{% if user.is_authenticated %}
-		<div class="readability-card">
+		<div class="readability-card-up">
 			<div class="like-card-container">
 				
 				<form action="{% url 'like-post' %}" method="POST" class="like-form" id="{{ post.id }}">
@@ -78,8 +106,7 @@
 		</div>
 		{% endif %}
 		{% endfor %}
-
-		<div class="pagination-container">
+		<div class="pagination-container-up">
 			{% if is_paginated %}
 				{% if page_obj.has_previous %}
 					<a class='page-1-link' href="?page=1">
@@ -104,7 +131,9 @@
 
 			{% endif %}
 		</div>
-</section>
+	</div>
+</div>
+
 
 <script type="text/javascript">
 	$( document ).ready(function() {

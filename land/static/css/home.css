@@ -502,7 +502,7 @@ input.question:focus {
 	background-color: #F0A7A0;
 }
 
-#div_id_username, #div_id_fb_link, #div_id_insta_link, #div_id_twitter_link, #div_id_linkedin_link, #div_id_email, #div_id_password1, #div_id_password2, #div_id_image {
+#div_id_username, #div_id_bio, #div_id_quote, #div_id_fb_link, #div_id_insta_link, #div_id_twitter_link, #div_id_linkedin_link, #div_id_email, #div_id_password1, #div_id_password2, #div_id_image {
 	padding-bottom: 10px;
 }
 
@@ -820,7 +820,7 @@ input, select {
 }
 
 
-#div_id_email {
+#div_id_email, #div_id_bio, #div_id_quote {
 	background-color: #F0A7A0;
 }
 
@@ -828,7 +828,7 @@ input, select {
 	display: none;
 }
 
-#div_id_username div, #div_id_fb_link div, #div_id_insta_link div, #div_id_twitter_link div, #div_id_linkedin_link div, #div_id_password1 div, #div_id_password2 div, #div_id_new_password2 div {
+#div_id_username div, #div_id_bio div, #div_id_quote div, #div_id_fb_link div, #div_id_insta_link div, #div_id_twitter_link div, #div_id_linkedin_link div, #div_id_password1 div, #div_id_password2 div, #div_id_new_password2 div {
 	display: block;
 	background-color: #F0A7A0;
 }
@@ -904,6 +904,18 @@ input, select {
 
 #div_id_email label {
 	display: none;
+}
+
+#div_id_bio label {
+	display: none;
+}
+
+#div_id_quote label {
+	display: none;
+}
+
+#id_bio, #id_quote {
+	color: gray;
 }
 
 .media-card, .yp-container, .yp-posts-container {
